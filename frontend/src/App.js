@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import { CssBaseline } from "@mui/material";
 import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:3001")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not OK");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data && data.message) {
-          setMessage(data.message);
-        } else {
-          throw new Error("Invalid response format");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
 
   return (
     <div className="App">
-      <h1>{message}</h1>
+      <CssBaseline />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element= {<HomePage/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
