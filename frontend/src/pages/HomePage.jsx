@@ -1,11 +1,13 @@
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
+import SearchBar from '../components/SearchBar';
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <h1>Home Page</h1>
-    </div>
+      <SearchBar />
+    </>
   );
 }
 
