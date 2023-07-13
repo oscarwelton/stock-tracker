@@ -5,12 +5,25 @@ const SearchBar = () => {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
-    fetch(`http://localhost:5000/api/search/${value}`)
+    fetch(`http://localhost:3001/${value}`, { methd: "GET" })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((json) => {
+        console.log(json);
+      });
   };
 
+  const handleChange = (value) => {
+    setInput(value);
+    // fetchData(value);
+  };
 
+  const getStocks = () => {
+    fetch("http://localhost:3001/stocks", { method: "GET" })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
+  };
 
   return (
     <>
@@ -20,7 +33,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Search"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
         />
       </div>
       <div className="searchResults"></div>

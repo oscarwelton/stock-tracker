@@ -5,6 +5,7 @@ import { CssBaseline } from "@mui/material";
 import "./App.css";
 
 function App() {
+
   return (
     <div className="App">
       <CssBaseline />
@@ -16,6 +17,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

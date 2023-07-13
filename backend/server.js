@@ -2,18 +2,37 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require('uuid');
+const { verifyToken } = require("./middleware/auth");
+const searchSymbol = require("./data/stockApi");
+
 dotenv.config();
 
-
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
+
+// searchSymbol("AAPL").then((data) => console.log(data));
 
 const PORT = process.env.PORT || 3001;
 
-app.get("/", async (req, res) => {
-  res.json({ message: "Hello from server!" });
+app.get("/generate-jwt", async (req, res) => {
+  const sessionId = uuidv4();
+  const token = jwt.sign({ sessionId }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  res.cookie("token", token, { httpOnly: true });
+  res.json(token);
 });
 
+app.get("/", async (req, res) => {
+  res.json({ message: "Hello from root!" });
+})
+
+app.get("/stocks", async (req, res) => {
+  res.json({ message: "Hello from stocks!" });
+})
+
 app.listen(PORT, async () => {
-  console.log(`Server is running on port 8000.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
