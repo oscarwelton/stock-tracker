@@ -14,7 +14,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// searchSymbol("AAPL").then((data) => console.log(data));
+// searchSymbol("SH").then((data) => console.log(data));
 
 const PORT = process.env.PORT || 3001;
 
@@ -29,8 +29,11 @@ app.get("/", async (req, res) => {
   res.json({ message: "Hello from root!" });
 })
 
-app.get("/stocks", async (req, res) => {
-  res.json({ message: "Hello from stocks!" });
+app.post("/search", async (req, res) => {
+  const query = req.body;
+  searchSymbol(query.value).then((data) => console.log(data));
+
+  res.json({ message: 'Data received successfully!' });
 })
 
 app.listen(PORT, async () => {
