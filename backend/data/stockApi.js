@@ -2,11 +2,29 @@ const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const axios = require("axios");
 const fs = require("fs");
-const {matchSorter} = require('match-sorter')
-let baseURL = "https://finnhub.io/api/v1";
-let finnhubKey = process.env.FINNHUB_API_KEY;
+const {matchSorter} = require('match-sorter');
 
+const finnhub = require("finnhub");
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+const finnhubKey = process.env.FINNHUB_API_KEY;
+api_key.apiKey = finnhubKey;
+const finnhubClient = new finnhub.DefaultApi();
+
+let baseURL = "https://finnhub.io/api/v1";
 let stocksData = {};
+
+async function getQuote(obj) {
+  const symbol = obj.symbol;
+  try {
+    finnhubClient.quote(symbol, (error, data, response) => {
+      console.log(data.d);
+      // console.log(JSON.parse(quote));
+    });
+  }
+  catch (error) {
+    console.error(error);
+  }
+}
 
 async function searchSymbol(query) {
   function searchObjects(query, stocksData) {
@@ -17,6 +35,11 @@ async function searchSymbol(query) {
     );
     filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol","description"] });
     filteredData = filteredData.slice(0, 5);
+
+    filteredData.forEach( async (obj) => {
+      await getQuote(obj);
+    });
+
     return filteredData;
   }
 
