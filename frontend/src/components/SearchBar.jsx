@@ -1,6 +1,8 @@
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 
+let searchResults = [];
+
 const SearchBar = () => {
   const [input, setInput] = useState("");
 
@@ -14,7 +16,8 @@ const SearchBar = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        searchResults = json;
+        console.log(searchResults);
       });
   };
 
@@ -36,7 +39,14 @@ const SearchBar = () => {
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-      <div className="searchResults"></div>
+      <div className="searchResults">
+        {searchResults.map((result) => (
+          <div className="searchResult" key={result.id}>
+            <p>{result.displaySymbol}</p>
+            <p>{result.description}</p>
+          </div>
+        ))};
+      </div>
     </>
   );
 };

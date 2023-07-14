@@ -9,7 +9,6 @@ let finnhubKey = process.env.FINNHUB_API_KEY;
 let stocksData = {};
 
 async function searchSymbol(query) {
-
   function searchObjects(query, stocksData) {
     const filteredData = stocksData.filter(
       (obj) =>
