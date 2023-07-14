@@ -1,4 +1,6 @@
 const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
 const fs = require("fs");
 const { matchSorter } = require("match-sorter");
 const finnhub = require("finnhub");
@@ -11,6 +13,26 @@ const filePath = "./data/stocks.json";
 
 let baseURL = "https://finnhub.io/api/v1";
 let stocksData = {};
+
+const getUSStocks = async () => {
+  try {
+    const response = await axios.get(`${baseURL}/stock/symbol`, {
+      params: {
+        exchange: "US",
+        token: finnhubKey,
+        currency: "USD",
+        mic: "XNAS",
+        type: "commonstock",
+      },
+    });
+    const usStocks = response.data;
+    stocksData = usStocks;
+    fs.writeFileSync(filePath, JSON.stringify(usStocks, null, 2));
+    console.log("US stocks saved to JSON");
+  } catch (error) {
+    console.error("Error fetching US stocks:", error.message);
+  }
+};
 
 async function getQuote(obj) {
   const symbol = obj.symbol;
@@ -31,7 +53,7 @@ async function getQuote(obj) {
 }
 
 async function searchSymbol(query) {
-  async function searchObjects(query, stocksData) {
+  async function searchObjects(query) {
     let filteredData = stocksData.filter(
       (obj) =>
         obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
@@ -53,27 +75,6 @@ async function searchSymbol(query) {
   const searchResults = searchObjects(query, stocksData);
   return searchResults;
 }
-
-const getUSStocks = async () => {
-  try {
-    const response = await axios.get(`${baseURL}/stock/symbol`, {
-      params: {
-        exchange: "US",
-        token: finnhubKey,
-        currency: "USD",
-        mic: "XNAS",
-        type: "commonstock",
-      },
-    });
-
-    const usStocks = response.data;
-    fs.writeFileSync(filePath, JSON.stringify(usStocks, null, 2));
-    stocksData = usStocks;
-    console.log("US stocks saved to JSON");
-  } catch (error) {
-    console.error("Error fetching US stocks:", error.message);
-  }
-};
 
 getUSStocks();
 
