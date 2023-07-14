@@ -1,38 +1,60 @@
-// const basePath = "https://finnhub.io/api/v1";
-// const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const axios = require("axios");
+const fs = require("fs");
 
-// const searchSymbol = async (query) => {
-//   const url = `${basePath}/search?q=${query}&token=${process.env.FINNHUB_API_KEY}`;
-//   const response = await fetch(url);
-
-//   if (!response.ok) {
-//     const message = `An error has occured: ${response.status}`;
-//     throw new Error(message);
-//   }
-
-//   return await response.json();
-// };
-
-// module.exports = searchSymbol;
-
-// import fetch from 'node-fetch';
-
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-
-let baseURL = 'https://finnhub.io/api/v1';
+let baseURL = "https://finnhub.io/api/v1";
 let finnhubKey = process.env.FINNHUB_API_KEY;
 
-async function searchSymbol(query) {
-  const url = new URL(`${baseURL}/search`);
-  url.searchParams.append('q', query);
-  url.searchParams.append('token', finnhubKey);
+let stocksData = {};
 
-  return await fetch(url)
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch(error => {
-      console.error(error);
-    });
+async function searchSymbol(query) {
+
+  function searchObjects(query, stocksData) {
+    const filteredData = stocksData.filter(
+      (obj) =>
+        obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
+        obj.description.toLowerCase().includes(query.toLowerCase())
+    );
+    return filteredData;
+  }
+
+  const searchResults = searchObjects(query, stocksData);
+  return searchResults;
 }
+
+async function saveToJSON(usStocks) {
+  const filePath = "./data/stocksJSON.json";
+  const data = JSON.stringify(usStocks, null, 2);
+
+  try {
+    fs.writeFileSync(filePath, data);
+    stocksData = usStocks;
+    console.log("Data saved to stocksJSON.json");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const getUSStocks = async () => {
+  try {
+    const response = await axios.get(`${baseURL}/stock/symbol`, {
+      params: {
+        exchange: "US",
+        token: finnhubKey,
+        currency: "USD",
+        mic: "XNAS",
+        type: "commonstock",
+      },
+    });
+
+    const usStocks = response.data;
+    await saveToJSON(usStocks);
+  } catch (error) {
+    console.error("Error fetching US stocks:", error.message);
+  }
+};
+
+getUSStocks();
 
 module.exports = searchSymbol;

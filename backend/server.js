@@ -30,10 +30,9 @@ app.get("/", async (req, res) => {
 })
 
 app.post("/search", async (req, res) => {
-  const query = req.body;
-  searchSymbol(query.value).then((data) => console.log(data));
-
-  res.json({ message: 'Data received successfully!' });
+  const query = req.body.value;
+  searchSymbol(query).then((data) => res.json(data))
+  .catch((error) => console.error(error));
 })
 
 app.listen(PORT, async () => {
