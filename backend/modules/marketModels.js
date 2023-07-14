@@ -7,19 +7,55 @@ function url(model) {
 
 async function gainers() {
   const url = url("gainers");
-}
 
+  axios
+    .get(url)
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 async function losers() {
   const url = url("losers");
 
+  axios
+    .get(url)
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 async function mostActive() {
   const url = url("actives");
-}
 
+  axios
+    .get(url)
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 async function sectors() {
   const url = `https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=${api_key}`;
 }
+
+export { gainers, losers, mostActive, sectors };
+
+// const axios = require('axios');
+
+// axios.get('https://api.example.com/data')
+//   .then(response => {
+//     console.log(response.data);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
