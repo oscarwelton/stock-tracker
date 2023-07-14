@@ -1,14 +1,15 @@
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const { v4: uuidv4 } = require("uuid");
-const { verifyToken } = require("./middleware/auth");
 const searchSymbol = require("./modules/stockApi");
-const marketNews = require("./modules/newsApi");
-const fs = require("fs");
+// const jwt = require("jsonwebtoken");
+// const { v4: uuidv4 } = require("uuid");
+// const { verifyToken } = require("./middleware/auth");
+// const marketNews = require("./modules/newsApi");
+const modelData = require("./modules/marketModels");
 
 dotenv.config();
 
@@ -22,12 +23,38 @@ app.get("/", async (req, res) => {
   res.json({ message: "Hello from root!" });
 });
 
+modelData();
+
 // const news = marketNews().then ((data) => console.log(data));
 
 app.get("/market-news", async (req, res) => {
   const newsBuffer = fs.readFileSync("./data/news.json");
   const newsData = JSON.parse(newsBuffer.toString());
   res.json(newsData);
+});
+
+app.get("/gainers", async (req, res) => {
+  const gainersBuffer = fs.readFileSync("./data/gainers.json");
+  const gainersData = JSON.parse(gainersBuffer.toString());
+  res.json(gainersData.slice(0, 5));
+});
+
+app.get("/losers", async (req, res) => {
+  const losersBuffer = fs.readFileSync("./data/losers.json");
+  const losersData = JSON.parse(losersBuffer.toString());
+  res.json(losersData.slice(0, 5));
+});
+
+app.get("/movers", async (req, res) => {
+  const moversBuffer = fs.readFileSync("./data/movers.json");
+  const moversData = JSON.parse(moversBuffer.toString());
+  res.json(moversData.slice(0, 5));
+});
+
+app.get("/sectors", async (req, res) => {
+  const sectorsBuffer = fs.readFileSync("./data/sectors.json");
+  const sectorsData = JSON.parse(sectorsBuffer.toString());
+  res.json(sectorsData.slice(0, 5));
 });
 
 app.post("/search", async (req, res) => {
