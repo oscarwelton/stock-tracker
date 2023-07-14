@@ -12,5 +12,21 @@ h1 {
 
 div {
   border: 1px solid black;
+}
+
+.searchWidget {
+  width: 50%;
+}
+
+
+.searchBar {
+  text-align: right;
+}
+
+.searchResults {
   padding: 1rem;
+}
+
+.searchResult {
+  padding: 0.25rem 1rem;
 }

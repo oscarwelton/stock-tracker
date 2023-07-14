@@ -5,8 +5,9 @@ let searchResults = [];
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
+  const [results, setResults] = useState([]);
 
-  const fetchData = (value) => {
+  const fetchData = async (value) => {
     fetch(`http://localhost:3001/search`, {
       method: "POST",
       headers: {
@@ -15,37 +16,39 @@ const SearchBar = () => {
       body: JSON.stringify({ value }),
     })
       .then((res) => res.json())
-      .then((json) => {
-        searchResults = json;
-        console.log(searchResults);
-      });
+      .then((json) =>  setResults(json));
   };
 
-  const handleChange = (value) => {
+  const handleChange = async (value) => {
     setInput(value);
-    if (value !== "") {
-      fetchData(value);
+    if (value.length > 1) {
+      await fetchData(value);
+    } else {
+      setResults([]);
     }
   };
 
   return (
     <>
-      <div className="input-wrapper">
-        <FaSearch id="search-icon" />
-        <input
-          type="text"
-          placeholder="Search"
-          value={input}
-          onChange={(e) => handleChange(e.target.value)}
-        />
-      </div>
-      <div className="searchResults">
-        {searchResults.map((result) => (
-          <div className="searchResult" key={result.id}>
-            <p>{result.displaySymbol}</p>
-            <p>{result.description}</p>
-          </div>
-        ))};
+      <div className="searchWidget">
+        <div className="searchBar">
+          <FaSearch id="searchIcon" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={input}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        </div>
+        <div className="searchResults">
+          {results.map((result) => (
+            <div className="searchResult" key={result.id}>
+              <p>{result.displaySymbol}</p>
+              <p>{result.description}</p>
+              <button>Click to Post</button>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
