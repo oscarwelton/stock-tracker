@@ -1,11 +1,18 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const MarketNews = () => {
   const [stories, setStories] = useState([]);
 
-  fetch("http://localhost:3001/market-news")
-    .then((res) => res.json())
-    .then((json) => setStories(json));
+  useEffect(() => {
+    fetch("http://localhost:3001/market-news")
+      .then((res) => res.json())
+      .then((data) => {
+        setStories(data.slice(0, 8));
+      })
+      .catch((error) => {
+        console.error("Error fetching market news:", error);
+      });
+  }, []);
 
   return (
     <div className="marketNews">
@@ -16,7 +23,6 @@ const MarketNews = () => {
           <p>{story.summary}</p>
         </div>
       ))}
-      ;
     </div>
   );
 };
