@@ -19,8 +19,11 @@ const MarketNews = () => {
       <h2>Latest News</h2>
       {stories.map((story, index) => (
         <div className="story" key={index}>
-          <h3>{story.headline}</h3>
-          <p>{story.summary}</p>
+          <img src={story.image} alt={story.headline} />
+          <div className="story-content">
+            <h3>{story.headline}</h3>
+            <p>{story.summary}</p>
+          </div>
         </div>
       ))}
     </div>

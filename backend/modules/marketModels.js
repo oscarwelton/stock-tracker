@@ -6,10 +6,8 @@ function url(model) {
 }
 
 async function gainers() {
-  const url = url("gainers");
-
   axios
-    .get(url)
+    .get(url("gainers"))
     .then((res) => {
       console.log(res.data);
     })
@@ -19,10 +17,8 @@ async function gainers() {
 }
 
 async function losers() {
-  const url = url("losers");
-
   axios
-    .get(url)
+    .get(url("gainers"))
     .then((res) => {
       console.log(res.data);
     })
@@ -32,10 +28,8 @@ async function losers() {
 }
 
 async function mostActive() {
-  const url = url("actives");
-
   axios
-    .get(url)
+    .get(url("gainers"))
     .then((res) => {
       console.log(res.data);
     })
@@ -46,7 +40,16 @@ async function mostActive() {
 
 async function sectors() {
   const url = `https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=${api_key}`;
-}
+
+  axios
+  .get(url)
+  .then((res) => {
+    console.log(res.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+};
 
 export { gainers, losers, mostActive, sectors };
 

@@ -27,7 +27,7 @@ const HomePage = () => {
       <Banner />
 
       <div style={{ display: "flex" }}>
-        <div style={{ flex: 2, background: 'red' }}><MarketNews /></div>
+        <div style={{ flex: 2 }}><MarketNews /></div>
         <div style={{ flex: 1 }}><Headlines /></div>
       </div>
 

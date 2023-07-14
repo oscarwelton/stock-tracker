@@ -68,12 +68,13 @@ const getUSStocks = async () => {
 
     const usStocks = response.data;
     fs.writeFileSync(filePath, JSON.stringify(usStocks, null, 2));
+    stocksData = usStocks;
     console.log("US stocks saved to JSON");
   } catch (error) {
     console.error("Error fetching US stocks:", error.message);
   }
 };
 
-// getUSStocks();
+getUSStocks();
 
 module.exports = searchSymbol;

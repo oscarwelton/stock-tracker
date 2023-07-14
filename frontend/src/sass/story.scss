@@ -1,0 +1,19 @@
+.marketNews{
+  padding: 1rem;
+}
+
+.story {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    height: 100%;
+    width: 120px;
+  }
+
+  .story-content {
+    margin-left: 1rem;
+  }
+}

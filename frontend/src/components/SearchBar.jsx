@@ -21,10 +21,8 @@ const SearchBar = () => {
 
   const handleChange = async (value) => {
     setInput(value);
-    const regex = /^[A-Za-z]+$/;
-
     if (value.length > 1) {
-      regex.test(value) ? await fetchData(value) : setResults([]);
+      await fetchData(value);
     } else {
       setResults([]);
     }
@@ -32,7 +30,8 @@ const SearchBar = () => {
 
   const handleClick = (result) => {
     setResults([]);
-    viewPage(result);
+    console.log(result)
+    // viewPage(result);
   };
 
   return (
