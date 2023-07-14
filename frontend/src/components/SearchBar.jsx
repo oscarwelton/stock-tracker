@@ -21,8 +21,10 @@ const SearchBar = () => {
 
   const handleChange = async (value) => {
     setInput(value);
+    const regex = /^[A-Za-z]+$/;
+
     if (value.length > 1) {
-      await fetchData(value);
+      regex.test(value) ? await fetchData(value) : setResults([]);
     } else {
       setResults([]);
     }

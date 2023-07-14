@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import Navbar from './Navbar';
+// import React, { useEffect } from "react";
+import Navbar from "./Navbar";
+import Grid from "../components/Grid";
 
 const HomePage = () => {
-
   // useEffect(() => {
   //  fetch('http://localhost:3001/generate-jwt')
   //     .then((res) => {
@@ -15,12 +15,23 @@ const HomePage = () => {
   //     });
   // });
 
-
   return (
     <>
       <Navbar />
+      <Grid>
+        <div className="gridItem">
+            <h1>hello world</h1>
+        </div>
+        <div className="gridItem">
+            <h1>hello other world</h1>
+        </div>
+        <div className="gridItem">
+          <h1>third times</h1>
+        </div>
+
+      </Grid>
     </>
   );
-}
+};
 
 export default HomePage;
