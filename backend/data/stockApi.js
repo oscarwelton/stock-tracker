@@ -2,8 +2,7 @@ const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const axios = require("axios");
 const fs = require("fs");
-const matchSorter = require("match-sorter");
-
+const {matchSorter} = require('match-sorter')
 let baseURL = "https://finnhub.io/api/v1";
 let finnhubKey = process.env.FINNHUB_API_KEY;
 
@@ -16,10 +15,9 @@ async function searchSymbol(query) {
         obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
         obj.description.toLowerCase().includes(query.toLowerCase())
     );
-    // filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol", "description"] });
+    filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol", "description"] });
     return filteredData;
   }
-
 
   const searchResults = searchObjects(query, stocksData);
   return searchResults;
