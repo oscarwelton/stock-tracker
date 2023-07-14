@@ -1,8 +1,10 @@
 const finnhub = require("finnhub");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+const fs = require("fs");
 
 api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
+const filePath = "./data/news.json";
 
 async function marketNews() {
   try {
@@ -11,14 +13,15 @@ async function marketNews() {
         if (error) {
           reject(error);
         } else {
-          resolve(data.slice(0, 5));
+          resolve(data);
         }
       });
     });
-    return news;
+    fs.writeFileSync(filePath, JSON.stringify(news, null, 2));
   } catch (error) {
     console.error(error);
   }
 }
+
 
 module.exports = marketNews;

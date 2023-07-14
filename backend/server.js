@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 const { verifyToken } = require("./middleware/auth");
 const searchSymbol = require("./modules/stockApi");
-const marketNews = require("./modules/homeApi");
+const marketNews = require("./modules/newsApi");
 
 dotenv.config();
 
@@ -51,7 +51,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "Hello from root!" });
 });
 
-const news = marketNews().then ((data) => console.log(data));
+// const news = marketNews().then ((data) => console.log(data));
 
 app.get("/market-news", async (req, res) => {
   res.json(news);

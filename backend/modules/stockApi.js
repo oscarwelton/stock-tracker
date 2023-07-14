@@ -7,6 +7,8 @@ const finnhubKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
 api_key.apiKey = finnhubKey;
 
+const filePath = "./data/stocks.json";
+
 let baseURL = "https://finnhub.io/api/v1";
 let stocksData = {};
 
@@ -52,19 +54,6 @@ async function searchSymbol(query) {
   return searchResults;
 }
 
-async function saveToJSON(usStocks) {
-  const filePath = "./data/stocksJSON.json";
-  const data = JSON.stringify(usStocks, null, 2);
-
-  try {
-    fs.writeFileSync(filePath, data);
-    stocksData = usStocks;
-    console.log("Data saved to stocksJSON.json");
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 const getUSStocks = async () => {
   try {
     const response = await axios.get(`${baseURL}/stock/symbol`, {
@@ -78,12 +67,13 @@ const getUSStocks = async () => {
     });
 
     const usStocks = response.data;
-    await saveToJSON(usStocks);
+    fs.writeFileSync(filePath, JSON.stringify(usStocks, null, 2));
+    console.log("US stocks saved to JSON");
   } catch (error) {
     console.error("Error fetching US stocks:", error.message);
   }
 };
 
-getUSStocks();
+// getUSStocks();
 
 module.exports = searchSymbol;
