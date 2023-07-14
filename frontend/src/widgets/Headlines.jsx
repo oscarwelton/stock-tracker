@@ -1,18 +1,31 @@
-const { useState } = require("react");
+const { useState, useEffect } = require("react");
 
 const Headlines = () => {
   const [gainers, setGainers] = useState([]);
   const [losers, setLosers] = useState([]);
+  const [movers, setMovers] = useState([]);
+  const [sectors, setSectors] = useState([]);
 
-  fetch("http://localhost:3001/gainers")
-    .then((res) => res.json())
-    .then((json) => setGainers(json));
+  useEffect(() => {
+    fetch("http://localhost:3001/gainers")
+      .then((res) => {
+        res.json()
+        console.log("test")
+      })
+      .then((json) => setGainers(json));
 
+    fetch("http://localhost:3001/losers")
+      .then((res) => res.json())
+      .then((json) => setLosers(json));
 
-  fetch("http://localhost:3001/losers")
-    .then((res) => res.json())
-    .then((json) => setLosers(json));
+    fetch("http://localhost:3001/movers")
+      .then((res) => res.json())
+      .then((json) => setMovers(json));
 
+    fetch("http://localhost:3001/sectors")
+      .then((res) => res.json())
+      .then((json) => setSectors(json["sectorPerformance"]))
+    });
 
   return (
     <>
@@ -20,8 +33,12 @@ const Headlines = () => {
         <h3>Gainers</h3>
         {gainers.map((gainer, index) => (
           <div className="gainer" key={index}>
-            <p>{gainer.symbol} - {gainer.name}</p>
-            <p>{gainer.price} USD | +{gainer.changesPercentage} %</p>
+            <p>
+              {gainer.symbol} - {gainer.name}
+            </p>
+            <p>
+              {gainer.price} USD | +{gainer.changesPercentage} %
+            </p>
           </div>
         ))}
       </div>
@@ -29,16 +46,36 @@ const Headlines = () => {
         <h3>Losers</h3>
         {losers.map((loser, index) => (
           <div className="loser" key={index}>
-            <p>{loser.symbol} - {loser.name}</p>
-            <p>{loser.price} USD | {loser.changesPercentage} %</p>
-            </div>
+            <p>
+              {loser.symbol} - {loser.name}
+            </p>
+            <p>
+              {loser.price} USD | {loser.changesPercentage} %
+            </p>
+          </div>
         ))}
       </div>
-      <div className="volume">
-        <h3>Volume</h3>
+      <div className="movers">
+        <h3>Movers</h3>
+        {movers.map((mover, index) => (
+          <div className="mover" key={index}>
+            <p>
+              {mover.symbol} - {mover.name}
+            </p>
+            <p>
+              {mover.price} USD | {mover.changesPercentage} %
+            </p>
+          </div>
+        ))}
       </div>
       <div className="sectors">
-        <h3>Secotrs</h3>
+        <h3>Sectors</h3>
+        {Object.keys(sectors).map((key, index) => (
+          <div className="sector" key={index}>
+            <p>{sectors[key].sector} </p>
+            <p>{sectors[key].changesPercentage}</p>
+          </div>
+        ))}
       </div>
     </>
   );

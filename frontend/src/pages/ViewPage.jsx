@@ -1,5 +1,5 @@
-const viewPage = (result) => {
+// const viewPage = (result) => {
 
-}
+// }
 
-export default viewPage;
+// export default viewPage;

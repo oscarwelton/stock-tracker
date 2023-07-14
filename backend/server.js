@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "Hello from root!" });
 });
 
-modelData();
+// modelData();
 
 // const news = marketNews().then ((data) => console.log(data));
 
@@ -54,7 +54,7 @@ app.get("/movers", async (req, res) => {
 app.get("/sectors", async (req, res) => {
   const sectorsBuffer = fs.readFileSync("./data/sectors.json");
   const sectorsData = JSON.parse(sectorsBuffer.toString());
-  res.json(sectorsData.slice(0, 5));
+  res.json(sectorsData);
 });
 
 app.post("/search", async (req, res) => {

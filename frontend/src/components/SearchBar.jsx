@@ -1,7 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import FlexBetween from "./FlexBetween";
-import viewPage from "../pages/ViewPage";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -31,7 +30,6 @@ const SearchBar = () => {
   const handleClick = (result) => {
     setResults([]);
     console.log(result)
-    // viewPage(result);
   };
 
   return (
