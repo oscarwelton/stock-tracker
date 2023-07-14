@@ -7,25 +7,15 @@ const Headlines = () => {
   const [sectors, setSectors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/gainers")
-      .then((res) => {
-        res.json()
-        console.log("test")
-      })
-      .then((json) => setGainers(json));
-
-    fetch("http://localhost:3001/losers")
+    fetch("http://localhost:3001/headlines")
       .then((res) => res.json())
-      .then((json) => setLosers(json));
-
-    fetch("http://localhost:3001/movers")
-      .then((res) => res.json())
-      .then((json) => setMovers(json));
-
-    fetch("http://localhost:3001/sectors")
-      .then((res) => res.json())
-      .then((json) => setSectors(json["sectorPerformance"]))
-    });
+      .then((json) => {
+        setGainers(json.gainers);
+        setLosers(json.losers);
+        setMovers(json.movers);
+        setSectors(json.sectors["sectorPerformance"]);
+      });
+  }, []);
 
   return (
     <>

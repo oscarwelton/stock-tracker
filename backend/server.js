@@ -33,29 +33,34 @@ app.get("/market-news", async (req, res) => {
   res.json(newsData);
 });
 
-app.get("/gainers", async (req, res) => {
-  const gainersBuffer = fs.readFileSync("./data/gainers.json");
-  const gainersData = JSON.parse(gainersBuffer.toString());
-  res.json(gainersData.slice(0, 5));
+app.get("/headlines", async (req, res) => {
+  try {
+    const gainersBuffer = fs.readFileSync("./data/gainers.json");
+    const gainersData = JSON.parse(gainersBuffer.toString());
+
+    const losersBuffer = fs.readFileSync("./data/losers.json");
+    const losersData = JSON.parse(losersBuffer.toString());
+
+    const moversBuffer = fs.readFileSync("./data/movers.json");
+    const moversData = JSON.parse(moversBuffer.toString());
+
+    const sectorsBuffer = fs.readFileSync("./data/sectors.json");
+    const sectorsData = JSON.parse(sectorsBuffer.toString());
+
+    const combinedData = {
+      gainers: gainersData.slice(0, 5),
+      losers: losersData.slice(0, 5),
+      movers: moversData.slice(0, 5),
+      sectors: sectorsData,
+    };
+
+    res.json(combinedData);
+  } catch (error) {
+    console.error("Error retrieving headlines:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
-app.get("/losers", async (req, res) => {
-  const losersBuffer = fs.readFileSync("./data/losers.json");
-  const losersData = JSON.parse(losersBuffer.toString());
-  res.json(losersData.slice(0, 5));
-});
-
-app.get("/movers", async (req, res) => {
-  const moversBuffer = fs.readFileSync("./data/movers.json");
-  const moversData = JSON.parse(moversBuffer.toString());
-  res.json(moversData.slice(0, 5));
-});
-
-app.get("/sectors", async (req, res) => {
-  const sectorsBuffer = fs.readFileSync("./data/sectors.json");
-  const sectorsData = JSON.parse(sectorsBuffer.toString());
-  res.json(sectorsData);
-});
 
 app.post("/search", async (req, res) => {
   const query = req.body.value;
