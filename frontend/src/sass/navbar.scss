@@ -2,18 +2,38 @@
   height: 3rem;
 }
 
+.searchWidget {
+  position: relative;
+  width: 50%;
+}
+
 .searchBar {
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  input {
+    font-size: 1.5rem;
+  }
 }
 
 .searchResults {
+  position: absolute;
+  top: 100%; /* Position the results below the searchBar */
   width: 100%;
-  position: relative;
-  right: 0;
-  z-index: 1;
-  padding: 0.1rem;
+  max-height: 300px; /* Set a maximum height to limit the dropdown size */
+  overflow-y: auto;
+  overflow-x: hidden; /* Enable vertical scrolling if the results exceed the max height */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
 }
 
 .searchResult {
-  padding: 0.1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
+
+/* Add any other styles as needed */

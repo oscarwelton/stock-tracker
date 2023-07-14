@@ -48,21 +48,23 @@ const SearchBar = () => {
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>
-        <div className="searchResults">
-          {results.map((result, index) => (
-            <div className="searchResult" key={index}>
-              <FlexBetween>
-                <p>Symbol: {result.displaySymbol}</p>
-                <p>Company: {result.description}</p>
-              </FlexBetween>
-              <FlexBetween>
-                <p>Current Price: {result.currentPrice}</p>
-                <p>Percentage Change: {result.percentChange} %</p>
-              </FlexBetween>
-              <button onClick={() => handleClick(result)}>View</button>
-            </div>
-          ))}
-        </div>
+        {results.length > 0 && (
+          <div className="searchResults">
+            {results.map((result, index) => (
+              <div className="searchResult" key={index}>
+                <FlexBetween>
+                  <p>Symbol: {result.displaySymbol}</p>
+                  <p>Company: {result.description}</p>
+                </FlexBetween>
+                <FlexBetween>
+                  <p>Current Price: {result.currentPrice}</p>
+                  <p>Percentage Change: {result.percentChange} %</p>
+                </FlexBetween>
+                <button onClick={() => handleClick(result)}>View</button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

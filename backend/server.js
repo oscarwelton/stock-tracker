@@ -53,8 +53,6 @@ app.post("/search", async (req, res) => {
   .catch((error) => console.error(error));
 })
 
-
-
 app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}.`);
 });

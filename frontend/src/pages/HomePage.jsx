@@ -1,6 +1,7 @@
 // import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import Grid from "../components/Grid";
+import Banner from "../components/Banner";
 
 const HomePage = () => {
   // useEffect(() => {
@@ -15,11 +16,14 @@ const HomePage = () => {
   //     });
   // });
 
+
   return (
     <>
       <Navbar />
+      <Banner />
+
       <Grid>
-        <div className="gridItem">
+        {/* <div className="gridItem">
             <h1>hello world</h1>
         </div>
         <div className="gridItem">
@@ -27,7 +31,7 @@ const HomePage = () => {
         </div>
         <div className="gridItem">
           <h1>third times</h1>
-        </div>
+        </div> */}
 
       </Grid>
     </>
