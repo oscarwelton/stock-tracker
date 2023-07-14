@@ -1,11 +1,9 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const axios = require("axios");
 const fs = require("fs");
-const {matchSorter} = require('match-sorter');
+const { matchSorter } = require("match-sorter");
 
 const finnhub = require("finnhub");
-const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 const finnhubKey = process.env.FINNHUB_API_KEY;
 api_key.apiKey = finnhubKey;
 const finnhubClient = new finnhub.DefaultApi();
@@ -16,30 +14,38 @@ let stocksData = {};
 async function getQuote(obj) {
   const symbol = obj.symbol;
   try {
-    finnhubClient.quote(symbol, (error, data, response) => {
-      console.log(data.d);
-      // console.log(JSON.parse(quote));
+    const quote = await new Promise((resolve, reject) => {
+      finnhubClient.quote(symbol, (error, data, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
     });
-  }
-  catch (error) {
+    return quote;
+  } catch (error) {
     console.error(error);
   }
 }
 
 async function searchSymbol(query) {
-  function searchObjects(query, stocksData) {
+  async function searchObjects(query, stocksData) {
     let filteredData = stocksData.filter(
       (obj) =>
         obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
         obj.description.toLowerCase().includes(query.toLowerCase())
     );
-    filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol","description"] });
-    filteredData = filteredData.slice(0, 5);
-
-    filteredData.forEach( async (obj) => {
-      await getQuote(obj);
+    filteredData = matchSorter(filteredData, query, {
+      keys: ["displaySymbol", "description"],
     });
+    filteredData = filteredData.slice(0, 3);
 
+    for (let obj of filteredData) {
+      const quote = await getQuote(obj);
+      obj["currentPrice"] = quote.c;
+      obj["percentChange"] = quote.dp;
+    }
     return filteredData;
   }
 

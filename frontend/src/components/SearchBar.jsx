@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
+import FlexBetween from "./FlexBetween";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -14,7 +15,7 @@ const SearchBar = () => {
       body: JSON.stringify({ value }),
     })
       .then((res) => res.json())
-      .then((json) =>  setResults(json));
+      .then((json) => setResults(json));
   };
 
   const handleChange = async (value) => {
@@ -39,11 +40,17 @@ const SearchBar = () => {
           />
         </div>
         <div className="searchResults">
-          {results.map((result) => (
-            <div className="searchResult" key={result.id}>
-              <p>{result.displaySymbol}</p>
-              <p>{result.description}</p>
-              <button>Click to Post</button>
+          {results.map((result, index) => (
+            <div className="searchResult" key={index}>
+              <FlexBetween>
+                <p>Symbol: {result.displaySymbol}</p>
+                <p>Company: {result.description}</p>
+              </FlexBetween>
+              <FlexBetween>
+                <p>Current Price: {result.currentPrice}</p>
+                <p>Percentage Change: {result.percentChange} %</p>
+              </FlexBetween>
+              <button onClick={() => console.log(`${result.displaySymbol} clicked`)}>Click to Post</button>
             </div>
           ))}
         </div>

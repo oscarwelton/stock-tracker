@@ -20,8 +20,6 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <h3>Home Page</h3>
-      <SearchBar />
     </>
   );
 }

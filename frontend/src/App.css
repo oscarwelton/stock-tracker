@@ -1,7 +1,11 @@
 .App {
   /* text-align: center; */
+
 }
 
+body {
+  padding: 1rem;
+}
 
 h1 {
   font-size: 5rem;
@@ -10,11 +14,9 @@ h1 {
   padding: 0;
 }
 
-div {
-  border: 1px solid black;
-}
 
 .searchWidget {
+  background-color: antiquewhite;
   width: 50%;
 }
 
@@ -24,9 +26,14 @@ div {
 }
 
 .searchResults {
-  padding: 1rem;
+  background-color: antiquewhite;
+  width: 50%;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  padding: 0.1rem;
 }
 
 .searchResult {
-  padding: 0.25rem 1rem;
+  padding: 0.1rem 1rem;
 }

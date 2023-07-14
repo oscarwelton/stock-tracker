@@ -1,10 +1,11 @@
 import FlexBetween from "components/FlexBetween";
+import SearchBar from "components/SearchBar";
 
 const Navbar = () => {
   return (
-    <FlexBetween>
-          <h3>this is the navbar logo place holder</h3>
-          <h3>this is another placeholder</h3>
+    <FlexBetween className="Navbar">
+          <h3>Stocker</h3>
+          <SearchBar />
     </FlexBetween>
   );
 };
