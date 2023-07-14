@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import FlexBetween from "./FlexBetween";
+import viewPage from "../pages/ViewPage";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -27,6 +28,11 @@ const SearchBar = () => {
     }
   };
 
+  const handleClick = (result) => {
+    setResults([]);
+    viewPage(result);
+  };
+
   return (
     <>
       <div className="searchWidget">
@@ -34,8 +40,9 @@ const SearchBar = () => {
           <FaSearch id="searchIcon" />
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search for a stock"
             value={input}
+            onClick={(e) => handleChange(e.target.value)}
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>
@@ -50,7 +57,7 @@ const SearchBar = () => {
                 <p>Current Price: {result.currentPrice}</p>
                 <p>Percentage Change: {result.percentChange} %</p>
               </FlexBetween>
-              <button onClick={() => console.log(`${result.displaySymbol} clicked`)}>Click to Post</button>
+              <button onClick={() => handleClick(result)}>View</button>
             </div>
           ))}
         </div>

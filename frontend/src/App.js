@@ -2,7 +2,8 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import { CssBaseline } from "@mui/material";
-import "./App.css";
+import './sass/index.scss';
+
 
 function App() {
 
