@@ -1,7 +1,8 @@
 // import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import Grid from "../components/Grid";
 import Banner from "../components/Banner";
+import MarketNews from "../widgets/MarketNews";
+import Headlines from "../widgets/Headlines";
 
 const HomePage = () => {
   // useEffect(() => {
@@ -16,24 +17,20 @@ const HomePage = () => {
   //     });
   // });
 
+  fetch("http://localhost:3001/")
+    .then((res) => res.json())
+    .then((json) => console.log(json));
 
   return (
     <>
       <Navbar />
       <Banner />
 
-      <Grid>
-        {/* <div className="gridItem">
-            <h1>hello world</h1>
-        </div>
-        <div className="gridItem">
-            <h1>hello other world</h1>
-        </div>
-        <div className="gridItem">
-          <h1>third times</h1>
-        </div> */}
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 2, background: 'red' }}><MarketNews /></div>
+        <div style={{ flex: 1 }}><Headlines /></div>
+      </div>
 
-      </Grid>
     </>
   );
 };

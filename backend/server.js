@@ -7,6 +7,9 @@ const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require('uuid');
 const { verifyToken } = require("./middleware/auth");
 const searchSymbol = require("./data/stockApi");
+const marketNews = require("./data/homeApi");
+
+// marketNews();
 
 dotenv.config();
 

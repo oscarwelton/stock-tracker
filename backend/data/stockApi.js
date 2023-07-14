@@ -1,12 +1,11 @@
 const axios = require("axios");
 const fs = require("fs");
 const { matchSorter } = require("match-sorter");
-
 const finnhub = require("finnhub");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 const finnhubKey = process.env.FINNHUB_API_KEY;
-api_key.apiKey = finnhubKey;
 const finnhubClient = new finnhub.DefaultApi();
+api_key.apiKey = finnhubKey;
 
 let baseURL = "https://finnhub.io/api/v1";
 let stocksData = {};
