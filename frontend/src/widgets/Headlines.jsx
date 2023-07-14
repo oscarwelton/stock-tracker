@@ -2,10 +2,17 @@ const { useState } = require("react");
 
 const Headlines = () => {
   const [gainers, setGainers] = useState([]);
+  const [losers, setLosers] = useState([]);
 
   fetch("http://localhost:3001/gainers")
     .then((res) => res.json())
     .then((json) => setGainers(json));
+
+
+  fetch("http://localhost:3001/losers")
+    .then((res) => res.json())
+    .then((json) => setLosers(json));
+
 
   return (
     <>
@@ -20,6 +27,12 @@ const Headlines = () => {
       </div>
       <div className="losers">
         <h3>Losers</h3>
+        {losers.map((loser, index) => (
+          <div className="loser" key={index}>
+            <p>{loser.symbol} - {loser.name}</p>
+            <p>{loser.price} USD | {loser.changesPercentage} %</p>
+            </div>
+        ))}
       </div>
       <div className="volume">
         <h3>Volume</h3>

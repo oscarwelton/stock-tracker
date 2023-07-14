@@ -2,9 +2,9 @@
   {
     "symbol": "PRFX",
     "name": "PainReform Ltd.",
-    "change": 7.71,
-    "price": 13.46,
-    "changesPercentage": 134.087
+    "change": 7.3608,
+    "price": 13.1108,
+    "changesPercentage": 128.0139
   },
   {
     "symbol": "TDW-WTB",
@@ -16,9 +16,9 @@
   {
     "symbol": "FREQ",
     "name": "Frequency Therapeutics, Inc.",
-    "change": 0.2699,
-    "price": 0.6699,
-    "changesPercentage": 67.475
+    "change": 0.285,
+    "price": 0.685,
+    "changesPercentage": 71.25
   },
   {
     "symbol": "EDTXU",
@@ -35,6 +35,13 @@
     "changesPercentage": 46.2873
   },
   {
+    "symbol": "KSPN",
+    "name": "Kaspien Holdings Inc.",
+    "change": 0.053,
+    "price": 0.25,
+    "changesPercentage": 26.9036
+  },
+  {
     "symbol": "ASCBR",
     "name": "A SPAC II Acquisition Corporation",
     "change": 0.0231,
@@ -44,23 +51,9 @@
   {
     "symbol": "KSCP",
     "name": "Knightscope, Inc.",
-    "change": 0.4765,
-    "price": 2.0465,
-    "changesPercentage": 30.3503
-  },
-  {
-    "symbol": "TDW-WTA",
-    "name": "Tidewater Inc. Series A",
-    "change": 0.795,
-    "price": 3.575,
-    "changesPercentage": 28.5971
-  },
-  {
-    "symbol": "NTRB",
-    "name": "Nutriband Inc.",
-    "change": 0.82,
-    "price": 3.22,
-    "changesPercentage": 34.1667
+    "change": 0.459,
+    "price": 2.029,
+    "changesPercentage": 29.2357
   },
   {
     "symbol": "PKBO",
@@ -72,9 +65,16 @@
   {
     "symbol": "AIMD",
     "name": "Ainos, Inc.",
-    "change": 0.21,
-    "price": 0.94,
-    "changesPercentage": 28.7671
+    "change": 0.23,
+    "price": 0.96,
+    "changesPercentage": 31.5068
+  },
+  {
+    "symbol": "TDW-WTA",
+    "name": "Tidewater Inc. Series A",
+    "change": 0.795,
+    "price": 3.575,
+    "changesPercentage": 28.5971
   },
   {
     "symbol": "EVTV",
@@ -84,32 +84,32 @@
     "changesPercentage": 27.9167
   },
   {
-    "symbol": "GOEV",
-    "name": "Canoo Inc.",
-    "change": 0.1395,
-    "price": 0.6947,
-    "changesPercentage": 25.1261
+    "symbol": "NTRB",
+    "name": "Nutriband Inc.",
+    "change": 0.75,
+    "price": 3.15,
+    "changesPercentage": 31.25
   },
   {
     "symbol": "ACAD",
     "name": "ACADIA Pharmaceuticals Inc.",
-    "change": 6.885,
-    "price": 32.685,
-    "changesPercentage": 26.6861
+    "change": 6.64,
+    "price": 32.44,
+    "changesPercentage": 25.7364
+  },
+  {
+    "symbol": "GOEV",
+    "name": "Canoo Inc.",
+    "change": 0.1398,
+    "price": 0.695,
+    "changesPercentage": 25.1801
   },
   {
     "symbol": "RDHL",
     "name": "RedHill Biopharma Ltd.",
-    "change": 0.37,
-    "price": 1.83,
-    "changesPercentage": 25.3425
-  },
-  {
-    "symbol": "MNPR",
-    "name": "Monopar Therapeutics Inc.",
-    "change": 0.1857,
-    "price": 1.0397,
-    "changesPercentage": 21.7447
+    "change": 0.3401,
+    "price": 1.8001,
+    "changesPercentage": 23.2945
   },
   {
     "symbol": "FEXDR",
@@ -126,46 +126,53 @@
     "changesPercentage": 21.6275
   },
   {
-    "symbol": "TMC",
-    "name": "TMC the metals company Inc.",
-    "change": 0.33,
-    "price": 2.15,
-    "changesPercentage": 18.1319
-  },
-  {
-    "symbol": "AEHR",
-    "name": "Aehr Test Systems",
-    "change": 7.57,
-    "price": 49,
-    "changesPercentage": 18.2718
+    "symbol": "MNPR",
+    "name": "Monopar Therapeutics Inc.",
+    "change": 0.186,
+    "price": 1.04,
+    "changesPercentage": 21.7799
   },
   {
     "symbol": "LUNR",
     "name": "Intuitive Machines, Inc.",
-    "change": 1.56,
-    "price": 10.1,
-    "changesPercentage": 18.267
+    "change": 1.8,
+    "price": 10.34,
+    "changesPercentage": 21.0773
   },
   {
-    "symbol": "DRUG",
-    "name": "Bright Minds Biosciences Inc.",
-    "change": 0.564,
-    "price": 3.519,
-    "changesPercentage": 19.0863
+    "symbol": "AEHR",
+    "name": "Aehr Test Systems",
+    "change": 7.944,
+    "price": 49.374,
+    "changesPercentage": 19.1745
   },
   {
-    "symbol": "DOGZ",
-    "name": "Dogness (International) Corporation",
-    "change": 0.061,
-    "price": 0.761,
-    "changesPercentage": 8.7143
+    "symbol": "TMC",
+    "name": "TMC the metals company Inc.",
+    "change": 0.3208,
+    "price": 2.1408,
+    "changesPercentage": 17.6264
   },
   {
     "symbol": "GTBP",
     "name": "GT Biopharma, Inc.",
-    "change": 0.049,
-    "price": 0.33,
-    "changesPercentage": 17.4377
+    "change": 0.0391,
+    "price": 0.3201,
+    "changesPercentage": 13.9146
+  },
+  {
+    "symbol": "ALIM",
+    "name": "Alimera Sciences, Inc.",
+    "change": 0.53,
+    "price": 3.82,
+    "changesPercentage": 16.1094
+  },
+  {
+    "symbol": "NMTC",
+    "name": "NeuroOne Medical Technologies Corporation",
+    "change": 0.3101,
+    "price": 1.9401,
+    "changesPercentage": 19.0245
   },
   {
     "symbol": "NVACR",
@@ -175,32 +182,11 @@
     "changesPercentage": 15.3846
   },
   {
-    "symbol": "NMTC",
-    "name": "NeuroOne Medical Technologies Corporation",
-    "change": 0.2599,
-    "price": 1.8899,
-    "changesPercentage": 15.9448
-  },
-  {
     "symbol": "SFWL",
     "name": "Shengfeng Development Limited",
-    "change": 0.7,
-    "price": 6.46,
-    "changesPercentage": 12.1528
-  },
-  {
-    "symbol": "KSPN",
-    "name": "Kaspien Holdings Inc.",
-    "change": 0.083,
-    "price": 0.28,
-    "changesPercentage": 42.132
-  },
-  {
-    "symbol": "OPTT",
-    "name": "Ocean Power Technologies, Inc.",
-    "change": 0.0818,
-    "price": 0.6969,
-    "changesPercentage": 13.2986
+    "change": 0.82,
+    "price": 6.58,
+    "changesPercentage": 14.2361
   },
   {
     "symbol": "QNRX",
@@ -208,6 +194,20 @@
     "change": 0.0637,
     "price": 0.5389,
     "changesPercentage": 13.4049
+  },
+  {
+    "symbol": "DRUG",
+    "name": "Bright Minds Biosciences Inc.",
+    "change": 0.4051,
+    "price": 3.3601,
+    "changesPercentage": 13.709
+  },
+  {
+    "symbol": "OPTT",
+    "name": "Ocean Power Technologies, Inc.",
+    "change": 0.0818,
+    "price": 0.6969,
+    "changesPercentage": 13.2986
   },
   {
     "symbol": "STIX",
@@ -219,72 +219,9 @@
   {
     "symbol": "ARCT",
     "name": "Arcturus Therapeutics Holdings Inc.",
-    "change": 4.155,
-    "price": 34.965,
-    "changesPercentage": 13.4859
-  },
-  {
-    "symbol": "ERNA",
-    "name": "Eterna Therapeutics Inc.",
-    "change": 0.325,
-    "price": 2.875,
-    "changesPercentage": 12.7451
-  },
-  {
-    "symbol": "HYZN",
-    "name": "Hyzon Motors Inc.",
-    "change": 0.155,
-    "price": 1.455,
-    "changesPercentage": 11.9231
-  },
-  {
-    "symbol": "CUEN",
-    "name": "Cuentas Inc.",
-    "change": 0.5975,
-    "price": 5.0375,
-    "changesPercentage": 13.4572
-  },
-  {
-    "symbol": "RVYL",
-    "name": "Ryvyl Inc.",
-    "change": 0.148,
-    "price": 1.558,
-    "changesPercentage": 10.4965
-  },
-  {
-    "symbol": "ALIM",
-    "name": "Alimera Sciences, Inc.",
-    "change": 0.3908,
-    "price": 3.6808,
-    "changesPercentage": 11.8784
-  },
-  {
-    "symbol": "EFHTR",
-    "name": "EF Hutton Acquisition Corporation I Rights",
-    "change": 0.019,
-    "price": 0.18,
-    "changesPercentage": 11.8012
-  },
-  {
-    "symbol": "ELAN",
-    "name": "Elanco Animal Health Incorporated",
-    "change": 1.255,
-    "price": 11.855,
-    "changesPercentage": 11.8396
-  },
-  {
-    "symbol": "JGGCR",
-    "name": "Jaguar Global Growth Corporation I",
-    "change": 0.0175,
-    "price": 0.17,
-    "changesPercentage": 11.4754
-  },
-  {
-    "symbol": "VIVK",
-    "name": "Vivakor, Inc.",
-    "change": 0.0901,
-    "price": 1.2501,
-    "changesPercentage": 7.7672
+    "change": 4.07,
+    "price": 34.88,
+    "changesPercentage": 13.21
   },
   {
     "symbol": "WAVS",
@@ -294,39 +231,74 @@
     "changesPercentage": 11.8383
   },
   {
-    "symbol": "GKOS",
-    "name": "Glaukos Corporation",
-    "change": 7.9,
-    "price": 79.54,
-    "changesPercentage": 11.0274
+    "symbol": "VIRI",
+    "name": "Virios Therapeutics, Inc.",
+    "change": 0.2266,
+    "price": 2.2166,
+    "changesPercentage": 11.3869
   },
   {
-    "symbol": "INMB",
-    "name": "INmune Bio, Inc.",
-    "change": 0.915,
-    "price": 10.765,
-    "changesPercentage": 9.2893
+    "symbol": "CUEN",
+    "name": "Cuentas Inc.",
+    "change": 0.36,
+    "price": 4.8,
+    "changesPercentage": 8.1081
   },
   {
-    "symbol": "FRLN",
-    "name": "Freeline Therapeutics Holdings plc",
-    "change": 0.5,
-    "price": 5.25,
-    "changesPercentage": 10.5263
+    "symbol": "ELAN",
+    "name": "Elanco Animal Health Incorporated",
+    "change": 1.265,
+    "price": 11.865,
+    "changesPercentage": 11.934
+  },
+  {
+    "symbol": "EFHTR",
+    "name": "EF Hutton Acquisition Corporation I Rights",
+    "change": 0.019,
+    "price": 0.18,
+    "changesPercentage": 11.8012
   },
   {
     "symbol": "NEGG",
     "name": "Newegg Commerce, Inc.",
-    "change": 0.15,
-    "price": 1.52,
-    "changesPercentage": 10.9489
+    "change": 0.1406,
+    "price": 1.5106,
+    "changesPercentage": 10.2628
   },
   {
-    "symbol": "ANIX",
-    "name": "Anixa Biosciences, Inc.",
-    "change": 0.36,
-    "price": 3.54,
-    "changesPercentage": 11.3208
+    "symbol": "HYZN",
+    "name": "Hyzon Motors Inc.",
+    "change": 0.1549,
+    "price": 1.4549,
+    "changesPercentage": 11.9154
+  },
+  {
+    "symbol": "JGGCR",
+    "name": "Jaguar Global Growth Corporation I",
+    "change": 0.0175,
+    "price": 0.17,
+    "changesPercentage": 11.4754
+  },
+  {
+    "symbol": "GKOS",
+    "name": "Glaukos Corporation",
+    "change": 7.87,
+    "price": 79.51,
+    "changesPercentage": 10.9855
+  },
+  {
+    "symbol": "FRLN",
+    "name": "Freeline Therapeutics Holdings plc",
+    "change": 0.52,
+    "price": 5.27,
+    "changesPercentage": 10.9474
+  },
+  {
+    "symbol": "ERNA",
+    "name": "Eterna Therapeutics Inc.",
+    "change": 0.27,
+    "price": 2.82,
+    "changesPercentage": 10.5882
   },
   {
     "symbol": "CBIO",
@@ -336,6 +308,13 @@
     "changesPercentage": 9.9686
   },
   {
+    "symbol": "RVYL",
+    "name": "Ryvyl Inc.",
+    "change": 0.125,
+    "price": 1.535,
+    "changesPercentage": 8.8652
+  },
+  {
     "symbol": "KACLR",
     "name": "Kairous Acquisition Corp. Limited",
     "change": 0.0077,
@@ -343,10 +322,31 @@
     "changesPercentage": 9.5771
   },
   {
-    "symbol": "VIRI",
-    "name": "Virios Therapeutics, Inc.",
-    "change": 0.2,
-    "price": 2.19,
-    "changesPercentage": 10.0503
+    "symbol": "SJ",
+    "name": "Scienjoy Holding Corporation",
+    "change": 0.2654,
+    "price": 3.0554,
+    "changesPercentage": 9.5125
+  },
+  {
+    "symbol": "SAGAR",
+    "name": "Sagaliam Acquisition Corp.",
+    "change": 0.0194,
+    "price": 0.2238,
+    "changesPercentage": 9.4912
+  },
+  {
+    "symbol": "INMB",
+    "name": "INmune Bio, Inc.",
+    "change": 1.0699,
+    "price": 10.9199,
+    "changesPercentage": 10.8619
+  },
+  {
+    "symbol": "DMAQR",
+    "name": "Deep Medicine Acquisition Corp.",
+    "change": 0.014,
+    "price": 0.1651,
+    "changesPercentage": 9.2654
   }
 ]
