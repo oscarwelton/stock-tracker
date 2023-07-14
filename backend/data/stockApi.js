@@ -15,7 +15,8 @@ async function searchSymbol(query) {
         obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
         obj.description.toLowerCase().includes(query.toLowerCase())
     );
-    filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol", "description"] });
+    filteredData = matchSorter(filteredData, query, { keys: ["displaySymbol","description"] });
+    filteredData = filteredData.slice(0, 5);
     return filteredData;
   }
 
