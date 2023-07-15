@@ -27,7 +27,7 @@ const SearchBar = () => {
     }
   };
 
-  const handleClick = (result) => {
+  const handleClick = async (result) => {
     setResults([]);
     console.log(result)
   };

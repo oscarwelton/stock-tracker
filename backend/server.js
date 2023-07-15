@@ -9,7 +9,7 @@ const searchSymbol = require("./modules/stockApi");
 // const { v4: uuidv4 } = require("uuid");
 // const { verifyToken } = require("./middleware/auth");
 // const marketNews = require("./modules/newsApi");
-const modelData = require("./modules/marketModels");
+// const modelData = require("./modules/marketModels");
 
 dotenv.config();
 
@@ -25,7 +25,8 @@ app.get("/", async (req, res) => {
 
 // modelData();
 
-// const news = marketNews().then ((data) => console.log(data));
+// marketNews().then ((data) => console.log(data));
+
 
 app.get("/market-news", async (req, res) => {
   const newsBuffer = fs.readFileSync("./data/news.json");

@@ -9,7 +9,7 @@ const filePath = "./data/news.json";
 async function marketNews() {
   try {
     const news = await new Promise((resolve, reject) => {
-      finnhubClient.marketNews("general", {}, (error, data, response) => {
+      finnhubClient.marketNews("finance", {}, (error, data, response) => {
         if (error) {
           reject(error);
         } else {
