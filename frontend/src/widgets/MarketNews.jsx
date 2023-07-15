@@ -36,6 +36,8 @@ const MarketNews = () => {
 
   return (
     <div>
+      <button onClick={handleBack}>Back</button>
+      <button onClick={handleNext}>Next</button>
       {stories.map((story, index) => (
         <div className="story" key={index}>
           <img src={story.image} alt={story.headline} />
@@ -45,8 +47,6 @@ const MarketNews = () => {
           </div>
         </div>
       ))}
-      <button onClick={handleBack}>Back</button>
-      <button onClick={handleNext}>Next</button>
     </div>
   );
 };

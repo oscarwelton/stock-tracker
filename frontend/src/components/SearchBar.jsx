@@ -1,8 +1,11 @@
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import FlexBetween from "./FlexBetween";
+import { useNavigate } from "react-router-dom";
+
 
 const SearchBar = () => {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
 
@@ -27,11 +30,6 @@ const SearchBar = () => {
     }
   };
 
-  const handleClick = async (result) => {
-    setResults([]);
-    console.log(result)
-  };
-
   return (
     <>
       <div className="searchWidget">
@@ -48,7 +46,7 @@ const SearchBar = () => {
         {results.length > 0 && (
           <div className="searchResults">
             {results.map((result, index) => (
-              <div className="searchResult" key={index}>
+              <div className="searchResult" key={result.displaySymbol}>
                 <FlexBetween>
                   <p>Symbol: {result.displaySymbol}</p>
                   <p>Company: {result.description}</p>
@@ -57,7 +55,7 @@ const SearchBar = () => {
                   <p>Current Price: {result.currentPrice}</p>
                   <p>Percentage Change: {result.percentChange} %</p>
                 </FlexBetween>
-                <button onClick={() => handleClick(result)}>View</button>
+                <button onClick={() => navigate(`/${result.displaySymbol}`, {state: result})}>View</button>
               </div>
             ))}
           </div>
