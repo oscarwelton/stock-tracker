@@ -3,7 +3,6 @@ dotenv.config();
 
 const axios = require("axios");
 const finnhub = require("finnhub");
-const { resolve } = require("path");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
@@ -85,22 +84,6 @@ async function basicFinancials(symbol) {
     console.error(error);
     throw error;
   }
-
-  // try {
-  //   response = await new Promise((resolve, reject) => {
-  //     finnhubClient.companyBasicFinancials(symbol, (error, data, response) => {
-  //       if (error) {
-  //         reject(error);
-  //       } else {
-  //         resolve(data);
-  //       }
-  //     });
-  //   });
-  //   return response;
-  // } catch (error) {
-  //   console.error(error);
-  //   throw error;
-  // }
 }
 
 async function socialSentiment(symbol) {
@@ -137,4 +120,31 @@ async function getData(symbol) {
   return companyData;
 }
 
-module.exports = getData;
+async function chartData(symbol, period) {
+  try {
+    const response = await new Promise((resolve, reject) => {
+      finnhubClient.stockCandles(
+        symbol,
+        period,
+        1590988249,
+        1591852249,
+        (error, data, response) => {
+          if (error) {
+            reject(error);
+          } else {
+            console.log(data);
+            resolve(data);
+          }
+        }
+      );
+    });
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+chartData("AAPL", "D")
+
+module.exports = getData, chartData;

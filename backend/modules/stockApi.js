@@ -54,6 +54,8 @@ async function getQuote(obj) {
 
 async function searchSymbol(query) {
   async function searchObjects(query) {
+
+    const stocksData = JSON.parse(fs.readFileSync(filePath).toString());
     let filteredData = stocksData.filter(
       (obj) =>
         obj.displaySymbol.toLowerCase().includes(query.toLowerCase()) ||
@@ -76,6 +78,6 @@ async function searchSymbol(query) {
   return searchResults;
 }
 
-getUSStocks();
+// getUSStocks();
 
 module.exports = searchSymbol;

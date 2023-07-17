@@ -4,7 +4,7 @@ const peers = (props) => {
       <h3>Competitors:</h3>
       {props.peers.map((peer, index) => (
         <div className="peer" key={index}>
-          <p>{peer}</p>
+          <a href={`/${peer}`}>{peer}</a>
         </div>
       ))}
     </div>

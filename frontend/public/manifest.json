@@ -1,6 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "manifest_version": 2,
+  "name": "Your Extension",
+  "version": "1.0",
+  "web_accessible_resources": [
+    "media/webFonts/opensans/opensanslight.woff"
+  ],
   "icons": [
     {
       "src": "favicon.ico",

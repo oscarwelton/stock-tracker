@@ -7,6 +7,7 @@ import CompanyNews from "../widgets/CompanyNews";
 import { useEffect } from "react";
 import Peers from "../widgets/Peers";
 import Earnings from "../widgets/Earnings";
+import Chart from "../widgets/Chart";
 
 const ViewPage = () => {
   const location = useLocation();
@@ -27,21 +28,26 @@ const ViewPage = () => {
             setProfile(data.profile);
             setSentiment(data.sentiment);
             setFinancials(data.financials);
+            console.log(data.financials);
           });
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     fetchStats();
   }, [location.state.symbol]);
 
   return (
     <>
       <Navbar />
-
-      <h2>{profile.name}</h2>
-      <img className="company-logo" src={profile.logo} alt={profile.name} />
-      <StockGraph />
+      <div className="profile">
+        <h2>{profile.name} ({profile.ticker})</h2>
+        <a href={profile.weburl} rel="noreferrer" target="_blank">Visit Site</a>
+        <img className="company-logo" src={profile.logo} alt={profile.name} />
+        <h4>Industry: {profile.finnhubIndustry}</h4>
+        <h4>Market Cap: {profile.marketCapitalization}</h4>
+      </div>
+      <Chart />
       <StockStats />
       <CompanyNews />
       <Earnings earnings={earnings} />
