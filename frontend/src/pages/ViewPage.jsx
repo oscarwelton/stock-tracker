@@ -14,6 +14,7 @@ const ViewPage = () => {
   const [peers, setPeers] = React.useState([]);
   const [earnings, setEarnings] = React.useState([]);
   const [profile, setProfile] = React.useState([]);
+  const [chart, setChart] = React.useState([]);
   const [sentiment, setSentiment] = React.useState([]);
   const [financials, setFinancials] = React.useState([]);
 
@@ -28,7 +29,7 @@ const ViewPage = () => {
             setProfile(data.profile);
             setSentiment(data.sentiment);
             setFinancials(data.financials);
-            console.log(data.financials);
+            setChart(data.chart);
           });
       } catch (err) {
         console.log(err);
@@ -47,7 +48,7 @@ const ViewPage = () => {
         <h4>Industry: {profile.finnhubIndustry}</h4>
         <h4>Market Cap: {profile.marketCapitalization}</h4>
       </div>
-      <Chart />
+      <Chart chart={chart} />
       <StockStats />
       <CompanyNews />
       <Earnings earnings={earnings} />

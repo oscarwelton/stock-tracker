@@ -24,7 +24,6 @@ app.get("/", async (req, res) => {
 });
 
 // modelData();
-
 // marketNews().then ((data) => console.log(data));
 
 app.get("/market-news", async (req, res) => {

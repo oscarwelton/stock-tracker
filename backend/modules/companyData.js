@@ -102,42 +102,25 @@ async function socialSentiment(symbol) {
   return sentiment;
 }
 
-async function getData(symbol) {
-  const earnings = await earningsCalendar(symbol);
-  const profile = await companyProfile(symbol);
-  const peers = await getPeers(symbol);
-  const financials = await basicFinancials(symbol);
-  const sentiment = await socialSentiment(symbol);
 
-  let companyData = {
-    profile: profile,
-    peers: peers,
-    earnings: earnings,
-    financials: financials,
-    sentiment: sentiment,
-  };
-
-  return companyData;
-}
-
-async function chartData(symbol, period) {
+async function chartData(symbol) {
   try {
     const response = await new Promise((resolve, reject) => {
       finnhubClient.stockCandles(
         symbol,
-        period,
+        "D",
         1590988249,
         1591852249,
         (error, data, response) => {
           if (error) {
             reject(error);
           } else {
-            console.log(data);
             resolve(data);
           }
         }
       );
     });
+    console.log(response);
     return response;
   } catch (error) {
     console.error(error);
@@ -145,6 +128,24 @@ async function chartData(symbol, period) {
   }
 }
 
-chartData("AAPL", "D")
+async function getData(symbol) {
+  const earnings = await earningsCalendar(symbol);
+  const profile = await companyProfile(symbol);
+  const peers = await getPeers(symbol);
+  const financials = await basicFinancials(symbol);
+  const sentiment = await socialSentiment(symbol);
+  const chart = await chartData(symbol);
 
-module.exports = getData, chartData;
+  let companyData = {
+    profile: profile,
+    peers: peers,
+    earnings: earnings,
+    financials: financials,
+    sentiment: sentiment,
+    chart: chart,
+  };
+
+  return companyData;
+}
+
+module.exports = getData;
