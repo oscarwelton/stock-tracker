@@ -5,6 +5,7 @@ const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const searchSymbol = require("./modules/stockApi");
+const getData = require("./modules/companyData");
 // const jwt = require("jsonwebtoken");
 // const { v4: uuidv4 } = require("uuid");
 // const { verifyToken } = require("./middleware/auth");
@@ -26,7 +27,6 @@ app.get("/", async (req, res) => {
 // modelData();
 
 // marketNews().then ((data) => console.log(data));
-
 
 app.get("/market-news", async (req, res) => {
   const newsBuffer = fs.readFileSync("./data/news.json");
@@ -62,19 +62,27 @@ app.get("/headlines", async (req, res) => {
   }
 });
 
+app.get("/:symbol", async (req, res) => {
+  try {
+    const symbol = req.params.symbol;
+    const returnData = await getData(symbol);
+    console.log("Company data sent to client.", symbol)
+    res.json(returnData);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 app.post("/search", async (req, res) => {
   const query = req.body.value;
   searchSymbol(query)
-  .then((data) => res.json(data))
-  .catch((error) => console.error(error));
+    .then((data) => res.json(data))
+    .catch((error) => console.error(error));
 });
 
 app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-
 
 // app.get("/generate-jwt", async (req, res) => {
 //   const sessionId = uuidv4();

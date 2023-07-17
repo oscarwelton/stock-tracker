@@ -36,6 +36,7 @@ const MarketNews = () => {
 
   return (
     <div>
+      <h2>Latest News</h2>
       <button onClick={handleBack}>Back</button>
       <button onClick={handleNext}>Next</button>
       {stories.map((story, index) => (
