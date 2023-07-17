@@ -109,7 +109,7 @@ async function chartData(symbol) {
       finnhubClient.stockCandles(
         symbol,
         "D",
-        1590988249,
+        1500008249,
         1591852249,
         (error, data, response) => {
           if (error) {
