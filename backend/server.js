@@ -64,7 +64,7 @@ app.get("/:symbol", async (req, res) => {
   try {
     const symbol = req.params.symbol;
     const returnData = await getData(symbol);
-    console.log(returnData);
+    // console.log(returnData);
     res.json(returnData);
   } catch(error) {
     console.error("Error retrieving company data:", error);

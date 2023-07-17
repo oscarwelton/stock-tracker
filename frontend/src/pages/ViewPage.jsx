@@ -17,6 +17,7 @@ const ViewPage = () => {
   const [chart, setChart] = React.useState([]);
   const [sentiment, setSentiment] = React.useState([]);
   const [financials, setFinancials] = React.useState([]);
+  const [news, setNews] = React.useState([]);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -30,6 +31,7 @@ const ViewPage = () => {
             setSentiment(data.sentiment);
             setFinancials(data.financials);
             setChart(data.chart);
+            setNews(data.companyNews);
           });
       } catch (err) {
         console.log(err);
@@ -42,15 +44,21 @@ const ViewPage = () => {
     <>
       <Navbar />
       <div className="profile">
-        <h2>{profile.name} ({profile.ticker})</h2>
-        <a href={profile.weburl} rel="noreferrer" target="_blank">Visit Site</a>
+        <div className="profile-header">
         <img className="company-logo" src={profile.logo} alt={profile.name} />
+          <h2>
+            {profile.name} ({profile.ticker})
+          </h2>
+          <a href={profile.weburl} rel="noreferrer" target="_blank">
+            Visit Site
+          </a>
+        </div>
         <h4>Industry: {profile.finnhubIndustry}</h4>
         <h4>Market Cap: {profile.marketCapitalization}</h4>
       </div>
       <Chart chart={chart} />
       <StockStats />
-      <CompanyNews />
+      <CompanyNews news={news}/>
       <Earnings earnings={earnings} />
       <Peers peers={peers} />
     </>

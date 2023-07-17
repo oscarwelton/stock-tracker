@@ -1,10 +1,12 @@
 @import "reset";
 @import "fonts";
-@import "navbar";
-@import "banner";
-@import "story";
-@import "peers";
-@import 'earnings';
+@import "./components/navbar.scss";
+@import "./components/banner.scss";
+@import "./components/story.scss";
+@import "./components/peers.scss";
+@import './components/earnings.scss';
+@import "./components/chart.scss";
+@import "./pages/ViewPage.scss";
 
 #root {
   height: 100%;

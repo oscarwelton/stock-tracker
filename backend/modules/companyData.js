@@ -102,14 +102,36 @@ async function socialSentiment(symbol) {
   return sentiment;
 }
 
+async function companyNews(symbol) {
+  try {
+    const response = await new Promise((resolve, reject) => {
+      finnhubClient.companyNews(
+        symbol,
+        "2023-07-16",
+        "2023-07-17",
+        (error, data, response) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(data);
+          }
+        }
+      );
+    });
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
 async function chartData(symbol) {
   try {
     const response = await new Promise((resolve, reject) => {
       finnhubClient.stockCandles(
         symbol,
-        "D",
-        1500008249,
+        "M",
+        1590988249,
         1591852249,
         (error, data, response) => {
           if (error) {
@@ -120,7 +142,6 @@ async function chartData(symbol) {
         }
       );
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.error(error);
@@ -135,6 +156,7 @@ async function getData(symbol) {
   const financials = await basicFinancials(symbol);
   const sentiment = await socialSentiment(symbol);
   const chart = await chartData(symbol);
+  const companyNewsArticles = await companyNews(symbol);
 
   let companyData = {
     profile: profile,
@@ -143,6 +165,7 @@ async function getData(symbol) {
     financials: financials,
     sentiment: sentiment,
     chart: chart,
+    companyNews: companyNewsArticles,
   };
 
   return companyData;
