@@ -30,6 +30,11 @@ const SearchBar = () => {
     }
   };
 
+  const handleClick = (result) => {
+    setResults([]);
+    navigate(`/${result.displaySymbol}`, {state: result})
+  }
+
   return (
     <>
       <div className="searchWidget">
@@ -55,7 +60,7 @@ const SearchBar = () => {
                   <p>Current Price: {result.currentPrice}</p>
                   <p>Percentage Change: {result.percentChange} %</p>
                 </FlexBetween>
-                <button onClick={() => navigate(`/${result.displaySymbol}`, {state: result})}>View</button>
+                <button onClick={() => handleClick(result)}>View</button>
               </div>
             ))}
           </div>
