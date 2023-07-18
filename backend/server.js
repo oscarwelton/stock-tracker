@@ -6,9 +6,7 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const searchSymbol = require("./modules/stockApi");
 const getData = require("./modules/companyData");
-// const jwt = require("jsonwebtoken");
-// const { v4: uuidv4 } = require("uuid");
-// const { verifyToken } = require("./middleware/auth");
+const chartData = require("./modules/chartData");
 // const marketNews = require("./modules/newsApi");
 // const modelData = require("./modules/marketModels");
 
@@ -84,19 +82,11 @@ app.listen(PORT, async () => {
 
 app.post("/chart", async (req, res) => {
   const data = req.body;
-  // const chartData = await getData(data.symbol, data.resolution, data.from, data.to);
   console.log(data);
-  res.json("hello from the server");
+  // const returnData = await chartData(data[3]);
+  // res.json(returnData);
 });
 
-// app.get("/generate-jwt", async (req, res) => {
-//   const sessionId = uuidv4();
-//   const token = jwt.sign({ sessionId }, process.env.JWT_SECRET, {
-//     expiresIn: "7d",
-//   });
-//   res.cookie("token", token, { httpOnly: true });
-//   res.json(token);
-// });
 
 // const WebSocket = require("ws");
 

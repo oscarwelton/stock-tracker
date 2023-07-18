@@ -125,30 +125,6 @@ async function companyNews(symbol) {
   }
 }
 
-async function chartData(symbol) {
-  try {
-    const response = await new Promise((resolve, reject) => {
-      finnhubClient.stockCandles(
-        symbol,
-        "M",
-        1590988249,
-        1591852249,
-        (error, data, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(data);
-          }
-        }
-      );
-    });
-    return response;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
-
 async function getData(symbol) {
   const earnings = await earningsCalendar(symbol);
   const profile = await companyProfile(symbol);
@@ -164,7 +140,6 @@ async function getData(symbol) {
     earnings: earnings,
     financials: financials,
     sentiment: sentiment,
-    chart: chart,
     companyNews: companyNewsArticles,
   };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
-import { formatDate, convertDateToUnix } from "helpers/date-helper";
+import { formatDate, convertDateToUnix, getFrom } from "helpers/date-helper";
+import { formatData } from "helpers/formatChartData";
 import { useLocation } from "react-router-dom";
 import {
   AreaChart,
@@ -10,49 +11,40 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { chartConfig } from "../helpers/chartConfig";
 
 const Chart = () => {
+  let chartConfig = [
+    { "1d": { resolution: 15 } },
+    { "7d": { resolution: 30 } },
+    { "1m": { resolution: 60 } },
+    { "3m": { resolution: "D" } },
+    { "1y": { resolution: "D" } },
+  ];
+
   const location = useLocation();
   const [chartData, setChartData] = React.useState([]);
   const now = new Date();
 
-  const formatData = () => {
-    if (
-      chartData &&
-      chartData.chart &&
-      chartData.chart.c &&
-      chartData.chart.t
-    ) {
-      return chartData.chart.c.map((point, index) => ({
-        value: point.toFixed(2),
-        date: formatDate(chartData.chart.t[index]),
-      }));
-    }
-    return [];
-  };
+  const HandleClick = async () => {
+    const period = ["1d", "7d", "1m", "3m", "1y"]
 
-  const HandleClick = async (period) => {
-    const chartRequest = chartConfig[period];
-    chartRequest["symbol"] = location.state.symbol;
-    chartRequest["to"] = convertDateToUnix(now);
+    chartConfig.forEach((config, index) => {
+      config["to"] = convertDateToUnix(now);
+      config["from"] = getFrom(period[index], now);
+      config["symbol"] = location.state.symbol;
+    });
+
 
     await fetch(`http://localhost:3001/chart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(chartRequest),
+      body: JSON.stringify(chartConfig),
     })
       .then((res) => res.json())
-      .then((data) => {
-        setChartData(data);
-      });
+      .then((json) => console.log(json));
   };
-
-  useEffect(() => {
-    HandleClick("1d");
-  }, []);
 
   return (
     <div className="chart-widget">
@@ -65,7 +57,7 @@ const Chart = () => {
       </div>
 
       <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={formatData()}>
+        <AreaChart data={formatData(chartData)}>
           <Area
             type="monotone"
             dataKey="value"
