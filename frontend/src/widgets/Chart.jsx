@@ -23,8 +23,8 @@ const Chart = () => {
 
   const location = useLocation();
   const [chartData, setChartData] = React.useState([]);
+  const [allChartData, setAllChartData] = React.useState([]);
   const now = new Date();
-
   const period = ["1d", "7d", "1m", "3m", "1y"];
 
   chartConfig.forEach((config, index) => {
@@ -46,8 +46,7 @@ const Chart = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            setChartData(data);
+            setAllChartData(data);
           });
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -57,22 +56,23 @@ const Chart = () => {
     fetchData();
   }, []);
 
-  const HandleClick = async () => {
-    console.log(chartData);
+  const HandleClick = async (period) => {
+    const formattedData = await formatData(allChartData[period]);
+    setChartData(formattedData);
   };
 
   return (
     <div className="chart-widget">
       <div className="chart-buttons">
-        <button onClick={(e) => HandleClick(e.target.innerText)}>1d</button>
-        <button onClick={(e) => HandleClick(e.target.innerText)}>7d</button>
-        <button onClick={(e) => HandleClick(e.target.innerText)}>1m</button>
-        <button onClick={(e) => HandleClick(e.target.innerText)}>3m</button>
-        <button onClick={(e) => HandleClick(e.target.innerText)}>1y</button>
+        {period.map((p, index) => (
+          <button key={index} onClick={(e) => HandleClick(p)}>
+            {p}
+          </button>
+        ))}
       </div>
 
       <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={formatData(chartData)}>
+        <AreaChart data={chartData}>
           <Area
             type="monotone"
             dataKey="value"
