@@ -14,36 +14,51 @@ import {
 
 const Chart = () => {
   let chartConfig = [
-    { "1d": { resolution: 15 } },
-    { "7d": { resolution: 30 } },
-    { "1m": { resolution: 60 } },
-    { "3m": { resolution: "D" } },
-    { "1y": { resolution: "D" } },
+    { resolution: 30 },
+    { resolution: 30 },
+    { resolution: 60 },
+    { resolution: "D" },
+    { resolution: "D" },
   ];
 
   const location = useLocation();
   const [chartData, setChartData] = React.useState([]);
   const now = new Date();
 
+  const period = ["1d", "7d", "1m", "3m", "1y"];
+
+  chartConfig.forEach((config, index) => {
+    config["to"] = convertDateToUnix(now);
+    config["from"] = getFrom(period[index], now);
+    config["symbol"] = location.state.symbol;
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("fetching data");
+      try {
+        await fetch(`http://localhost:3001/chart`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(chartConfig),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setChartData(data);
+          });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const HandleClick = async () => {
-    const period = ["1d", "7d", "1m", "3m", "1y"]
-
-    chartConfig.forEach((config, index) => {
-      config["to"] = convertDateToUnix(now);
-      config["from"] = getFrom(period[index], now);
-      config["symbol"] = location.state.symbol;
-    });
-
-
-    await fetch(`http://localhost:3001/chart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(chartConfig),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json));
+    console.log(chartData);
   };
 
   return (

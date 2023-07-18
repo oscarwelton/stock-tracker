@@ -131,7 +131,6 @@ async function getData(symbol) {
   const peers = await getPeers(symbol);
   const financials = await basicFinancials(symbol);
   const sentiment = await socialSentiment(symbol);
-  const chart = await chartData(symbol);
   const companyNewsArticles = await companyNews(symbol);
 
   let companyData = {

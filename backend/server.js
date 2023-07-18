@@ -18,8 +18,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
 
-app.get("/", async (req, res) => {
-});
+app.get("/", async (req, res) => {});
 
 // modelData();
 // marketNews().then ((data) => console.log(data));
@@ -64,7 +63,7 @@ app.get("/:symbol", async (req, res) => {
     const returnData = await getData(symbol);
     // console.log(returnData);
     res.json(returnData);
-  } catch(error) {
+  } catch (error) {
     console.error("Error retrieving company data:", error);
   }
 });
@@ -81,12 +80,15 @@ app.listen(PORT, async () => {
 });
 
 app.post("/chart", async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  // const returnData = await chartData(data[3]);
-  // res.json(returnData);
+  try {
+    const data = req.body;
+    const returnData = await chartData(data);
+    console.log(returnData);
+    res.json(returnData);
+  } catch (error) {
+    console.error("Error retrieving chart data:", error);
+  }
 });
-
 
 // const WebSocket = require("ws");
 
