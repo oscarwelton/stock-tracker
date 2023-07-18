@@ -1,10 +1,9 @@
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useState, Component } from "react";
 import FlexBetween from "./FlexBetween";
 import { useNavigate } from "react-router-dom";
 
-
-const SearchBar = () => {
+function SearchBar() {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
@@ -32,8 +31,8 @@ const SearchBar = () => {
 
   const handleClick = (result) => {
     setResults([]);
-    navigate(`/${result.displaySymbol}`, {state: result})
-  }
+    navigate(`/${result.displaySymbol}`, { state: result });
+  };
 
   return (
     <>
@@ -68,6 +67,6 @@ const SearchBar = () => {
       </div>
     </>
   );
-};
+}
 
 export default SearchBar;

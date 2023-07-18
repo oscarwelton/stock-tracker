@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
-import StockGraph from "../widgets/StockGraph";
 import StockStats from "../widgets/StockStats";
 import CompanyNews from "../widgets/CompanyNews";
 import { useEffect } from "react";
@@ -56,7 +55,7 @@ const ViewPage = () => {
         <h4>Industry: {profile.finnhubIndustry}</h4>
         <h4>Market Cap: {profile.marketCapitalization}</h4>
       </div>
-      <Chart chart={chart} />
+      <Chart chart={location.state.symbol} />
       <StockStats />
       <CompanyNews news={news}/>
       <Earnings earnings={earnings} />

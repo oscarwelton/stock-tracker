@@ -1,5 +1,4 @@
 const CompanyNews = (props) => {
-
   return (
     <div className="news">
       <h2>Headlines</h2>

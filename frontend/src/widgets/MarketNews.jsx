@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { formatDateWithTime } from "helpers/date-helper";
 
 const MarketNews = () => {
   const [stories, setStories] = useState([]);
@@ -43,7 +44,9 @@ const MarketNews = () => {
         <div className="story" key={index}>
           <img src={story.image} alt={story.headline} />
           <div className="story-content">
-            <h3>{removeColon(story.headline)}</h3>
+
+          <h6>Published at: {formatDateWithTime(story.datetime)} | {story.source} </h6>
+          <h3>Published: {removeColon(story.headline)}  </h3>
             <p>{story.summary}</p>
           </div>
         </div>

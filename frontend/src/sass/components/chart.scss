@@ -9,4 +9,13 @@
   right: 0;
   z-index: 1;
 
+  button {
+    background-color: transparent;
+    color: black;
+
+    &:active {
+      background-color: indigo;
+      color: white;
+    }
+  }
 }

@@ -82,6 +82,13 @@ app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+app.post("/chart", async (req, res) => {
+  const data = req.body;
+  // const chartData = await getData(data.symbol, data.resolution, data.from, data.to);
+  console.log(data);
+  res.json("hello from the server");
+});
+
 // app.get("/generate-jwt", async (req, res) => {
 //   const sessionId = uuidv4();
 //   const token = jwt.sign({ sessionId }, process.env.JWT_SECRET, {
