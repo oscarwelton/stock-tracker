@@ -87,6 +87,18 @@ app.post("/chart", async (req, res) => {
   }
 });
 
+app.post("/peers", async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data);
+  }
+    catch (error) {
+    console.error("Error retrieving peers data:", error);
+  }
+});
+
+
+
 // const WebSocket = require("ws");
 
 // function webSocket() {

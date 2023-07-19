@@ -35,7 +35,12 @@ const getUSStocks = async () => {
 };
 
 async function getQuote(obj) {
-  const symbol = obj.symbol;
+  let symbol = "";
+  if (typeof obj === "object") {
+    symbol = obj.symbol;
+  } else {
+    symbol = obj;
+  }
   try {
     const quote = await new Promise((resolve, reject) => {
       finnhubClient.quote(symbol, (error, data, response) => {
@@ -54,7 +59,6 @@ async function getQuote(obj) {
 
 async function searchSymbol(query) {
   async function searchObjects(query) {
-
     const stocksData = JSON.parse(fs.readFileSync(filePath).toString());
     let filteredData = stocksData.filter(
       (obj) =>
@@ -81,3 +85,4 @@ async function searchSymbol(query) {
 // getUSStocks();
 
 module.exports = searchSymbol;
+module.exports = getQuote;

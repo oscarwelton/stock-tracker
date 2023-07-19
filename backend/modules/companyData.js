@@ -6,21 +6,42 @@ const finnhub = require("finnhub");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
+const getQuote = require("./stockApi");
 
 async function getPeers(symbol) {
-  let peers = [];
+  let peersArray = [];
+  let peerObject = {};
+  let peersDataToSend = [];
+
   try {
     await axios
       .get(
         `https://finnhub.io/api/v1/stock/peers?symbol=${symbol}&token=${process.env.FINNHUB_API_KEY}`
       )
       .then((data) => {
-        peers = data.data;
+        peersArray = data.data;
       });
   } catch (error) {
     console.error(error);
   }
-  return peers;
+
+  await Promise.all(
+    peersArray.map(async (peer) => {
+      try {
+        const quote = await new Promise((resolve, reject) => {
+          getQuote(peer)
+            .then((quote) => resolve(quote))
+            .catch((error) => reject(error));
+        });
+        peerObject = { symbol: peer, quote: quote };
+        peersDataToSend.push(peerObject);
+      } catch (error) {
+        console.error(error);
+      }
+    })
+  );
+
+  return peersDataToSend;
 }
 
 async function earningsCalendar(symbol) {

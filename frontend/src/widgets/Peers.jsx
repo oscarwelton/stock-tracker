@@ -1,10 +1,10 @@
-const peers = (props) => {
+const peers = ({peers}) => {
   return (
     <div className="peers">
-      <h3>Competitors:</h3>
-      {props.peers.map((peer, index) => (
+      {peers.map((peer, index) => (
         <div className="peer" key={index}>
-          <a href={`/${peer}`}>{peer}</a>
+          <p>{peer.symbol}</p>
+          <p>{peer.quote.c} {peer.quote.dp}%</p>
         </div>
       ))}
     </div>
