@@ -40,4 +40,5 @@ async function chartData(data) {
   return chartData;
 }
 
+
 module.exports = chartData;
