@@ -61,7 +61,6 @@ app.get("/:symbol", async (req, res) => {
   try {
     const symbol = req.params.symbol;
     const returnData = await getData(symbol);
-    // console.log(returnData);
     res.json(returnData);
   } catch (error) {
     console.error("Error retrieving company data:", error);
@@ -82,9 +81,7 @@ app.listen(PORT, async () => {
 app.post("/chart", async (req, res) => {
   try {
     const data = req.body;
-    const returnData = await chartData(data);
-    console.log(returnData);
-    res.json(returnData);
+    res.json(await chartData(data));
   } catch (error) {
     console.error("Error retrieving chart data:", error);
   }

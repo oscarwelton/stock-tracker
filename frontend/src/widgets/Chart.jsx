@@ -47,6 +47,8 @@ const Chart = () => {
           .then((res) => res.json())
           .then((data) => {
             setAllChartData(data);
+            setChartData(formatData(data['7d']));
+
           });
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -57,9 +59,9 @@ const Chart = () => {
   }, []);
 
   const HandleClick = async (period) => {
-    const formattedData = await formatData(allChartData[period]);
+    const formattedData = formatData(allChartData[period]);
     setChartData(formattedData);
-  };
+  }
 
   return (
     <div className="chart-widget">
