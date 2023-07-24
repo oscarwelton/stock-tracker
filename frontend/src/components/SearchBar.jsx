@@ -21,6 +21,7 @@ function SearchBar() {
   };
 
   const handleChange = async (value) => {
+    console.log(value);
     setInput(value);
     if (value.length > 1) {
       await fetchData(value);
