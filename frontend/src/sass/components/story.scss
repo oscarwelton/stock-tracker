@@ -26,15 +26,23 @@
   justify-content: space-between;
 }
 
+.news {
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
 .company-news-story {
+  padding-top: 1rem;
 
   .company-news-header {
     align-items: start;
     display: flex;
   }
-  // img {
-  //   height: 100%;
-  //   width: 120px;
-  // }
 
+
+}
+
+.company-headlines-header {
+  padding: 0.5rem;
 }

@@ -1,6 +1,17 @@
 .profile-header {
   display: flex;
   align-items: center;
+}
 
+.stats {
+  display: flex;
+
+  .information {
+    width: 60%;
+  }
+
+  .company-news {
+    width: 40%;
+  }
 
 }

@@ -2,6 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import { useState, Component } from "react";
 import FlexBetween from "./FlexBetween";
 import { useNavigate } from "react-router-dom";
+import { getPercentageColor } from "../helpers/color-helper";
 
 function SearchBar() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function SearchBar() {
 
   const handleChange = async (value) => {
     setInput(value);
+    if (value.length === 0) setResults([]);
     if (value.length > 1) {
       await fetchData(value);
     } else {
@@ -52,12 +54,17 @@ function SearchBar() {
             {results.map((result, index) => (
               <div className="searchResult" key={result.displaySymbol}>
                 <FlexBetween>
-                  <p>Symbol: {result.displaySymbol}</p>
-                  <p>Company: {result.description}</p>
-                </FlexBetween>
-                <FlexBetween>
-                  <p>Current Price: {result.currentPrice}</p>
-                  <p>Percentage Change: {result.percentChange} %</p>
+                  <p>
+                    {result.description} ({result.displaySymbol})
+                    {result.currentPrice}
+                    <span
+                      style={{
+                        color: getPercentageColor(result.percentChange),
+                      }}
+                    >
+                      {result.percentChange.toFixed(2)}%
+                    </span>
+                  </p>
                 </FlexBetween>
                 <button onClick={() => handleClick(result)}>View</button>
               </div>

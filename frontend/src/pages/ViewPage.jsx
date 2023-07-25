@@ -43,26 +43,33 @@ const ViewPage = () => {
     <>
       <Navbar />
       <div className="profile">
-            <Peers peers={peers} />
-        <div className="profile-header">
-          <img className="company-logo" src={profile.logo} alt={profile.name} />
-          <h2>
-            {profile.name} ({profile.ticker})
-          </h2>
-          <a href={profile.weburl} rel="noreferrer" target="_blank">
-            Visit Site
-          </a>
-        </div>
-        <h4>Industry: {profile.finnhubIndustry}</h4>
-        <h4>Market Cap: {profile.marketCapitalization}</h4>
+        <Peers peers={peers} />
+
         <div className="stats">
           <div className="information">
+            <div className="profile-header">
+              <img
+                className="company-logo"
+                src={profile.logo}
+                alt={profile.name}
+              />
+              <div>
+                <h2>
+                  {profile.name} ({profile.ticker})
+                  <a href={profile.weburl} rel="noreferrer" target="_blank">
+                  Visit Site
+                </a>
+                </h2>
+                <h4>Industry: {profile.finnhubIndustry} Market Cap: {profile.marketCapitalization}</h4>
+
+              </div>
+            </div>
             <Chart chart={[location.state.symbol, chartData]} />
             <StockStats financials={financials} />
             <Earnings earnings={earnings} />
           </div>
           <div className="company-news">
-            <CompanyNews news={news.slice(0, 5)} />
+            <CompanyNews news={news.slice(0, 20)} />
           </div>
         </div>
       </div>
