@@ -70,7 +70,9 @@ app.get("/:symbol", async (req, res) => {
 app.post("/search", async (req, res) => {
   const query = req.body.value;
   searchSymbol(query)
-    .then((data) => res.json(data))
+    .then((data) => {
+      res.json(data);
+    })
     .catch((error) => console.error(error));
 });
 
@@ -91,13 +93,10 @@ app.post("/peers", async (req, res) => {
   try {
     const data = req.body;
     console.log(data);
-  }
-    catch (error) {
+  } catch (error) {
     console.error("Error retrieving peers data:", error);
   }
 });
-
-
 
 // const WebSocket = require("ws");
 
