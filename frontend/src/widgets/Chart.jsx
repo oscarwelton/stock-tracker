@@ -35,7 +35,6 @@ const Chart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("fetching data");
       try {
         await fetch(`http://localhost:3001/chart`, {
           method: "POST",

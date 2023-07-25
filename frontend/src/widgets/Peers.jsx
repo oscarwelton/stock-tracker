@@ -1,4 +1,5 @@
 const peers = ({peers}) => {
+  console.log(peers);
   return (
     <div className="peers">
       {peers.map((peer, index) => (

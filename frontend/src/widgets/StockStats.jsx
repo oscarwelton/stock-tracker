@@ -2,8 +2,6 @@ const StockStats = (props) => {
   const financeData = props.financials.metric;
   const dataLoaded = financeData && Object.keys(financeData).length > 0;
 
-  console.log(financeData);
-
   return dataLoaded ? (
     <div className="financials">
       <h2>Financials</h2>

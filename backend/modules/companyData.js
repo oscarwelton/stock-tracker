@@ -29,18 +29,24 @@ async function getPeers(symbol) {
     peersArray.map(async (peer) => {
       try {
         const quote = await new Promise((resolve, reject) => {
-          getQuote(peer)
-            .then((quote) => resolve(quote))
-            .catch((error) => reject(error));
+          finnhubClient.quote(peer, (error, data, response) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(data);
+            }
+          });
         });
         peerObject = { symbol: peer, quote: quote };
         peersDataToSend.push(peerObject);
+        // console.log(peer, quote);
+        return quote;
       } catch (error) {
         console.error(error);
       }
     })
   );
-
+  console.log(peersDataToSend);
   return peersDataToSend;
 }
 
