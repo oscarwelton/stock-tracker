@@ -13,7 +13,6 @@ const ViewPage = () => {
   const [peers, setPeers] = React.useState([]);
   const [earnings, setEarnings] = React.useState([]);
   const [profile, setProfile] = React.useState([]);
-  const [sentiment, setSentiment] = React.useState([]);
   const [financials, setFinancials] = React.useState([]);
   const [chartData, setChartData] = React.useState([]);
   const [news, setNews] = React.useState([]);
@@ -27,10 +26,8 @@ const ViewPage = () => {
             setPeers(data.peers);
             setEarnings(data.earnings);
             setProfile(data.profile);
-            setSentiment(data.sentiment);
             setFinancials(data.financials);
             setNews(data.companyNews);
-            console.log(data.companyNews)
             setChartData(data.chart);
           });
       } catch (err) {
