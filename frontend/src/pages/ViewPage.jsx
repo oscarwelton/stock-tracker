@@ -27,7 +27,7 @@ const ViewPage = () => {
             setEarnings(data.earnings);
             setProfile(data.profile);
             setFinancials(data.financials);
-            setNews(data.companyNews);
+            setNews(data.companyNews.feed);
             setChartData(data.chart);
           });
       } catch (err) {

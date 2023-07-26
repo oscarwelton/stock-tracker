@@ -136,7 +136,6 @@ async function getData(symbol) {
     earnings: earnings,
     financials: financials,
     companyNews: companyNewsArticles,
-    // sentiment: sentiment,
   };
 
   return companyData;
