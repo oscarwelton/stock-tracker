@@ -62,7 +62,7 @@ function SearchBar() {
                         color: getPercentageColor(result.percentChange),
                       }}
                     >
-                      {result.percentChange.toFixed(2)}%
+                      {result.percentChange}%
                     </span>
                   </p>
                 </FlexBetween>

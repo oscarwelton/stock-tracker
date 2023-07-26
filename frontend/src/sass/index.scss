@@ -7,9 +7,11 @@
 @import './components/earnings.scss';
 @import "./components/chart.scss";
 @import "./pages/ViewPage.scss";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
 #root {
   height: 100%;
+  font-family: Rubik, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 body {

@@ -15,7 +15,7 @@ const Earnings = (props) => {
           <p>Estimated: {earning.estimate}</p>
           <p>
             <span style={{ color: getPercentageColor(earning.surprisePercent) }}>
-              {earning.surprise.toFixed(2)} ({earning.surprisePercent.toFixed(2)}%)
+              {earning.surprise} ({earning.surprisePercent}%)
             </span>
           </p>
         </div>

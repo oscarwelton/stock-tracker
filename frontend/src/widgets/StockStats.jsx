@@ -4,7 +4,6 @@ const StockStats = (props) => {
 
   return dataLoaded ? (
     <div className="financials">
-      <h2>Financials</h2>
       <p>52-Week High: {financeData['52WeekHigh']}</p>
       <p>52-Week Low: {financeData['52WeekLow']}</p>
       <p>Beta: {financeData['beta']}</p>

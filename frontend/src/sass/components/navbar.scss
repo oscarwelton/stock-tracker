@@ -1,5 +1,8 @@
 .Navbar {
   height: 3rem;
+  background-color: black;
+  color: white;
+  padding: 0rem 1rem;
 }
 
 .searchWidget {
@@ -32,6 +35,7 @@
 }
 
 .searchResult {
+  color: black;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;

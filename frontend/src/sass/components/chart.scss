@@ -9,8 +9,15 @@
   z-index: 1;
 
   button {
+    margin-left: 0.5rem;
     background-color: transparent;
     color: black;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &:active {
       background-color: indigo;
