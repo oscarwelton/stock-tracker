@@ -6,7 +6,7 @@ const finnhub = require("finnhub");
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
-const getQuote = require("./stockApi");
+let alphaVantageKey = process.env.ALPHA_VANTAGE_KEY;
 
 async function getPeers(symbol) {
   let peersArray = [];
@@ -39,14 +39,12 @@ async function getPeers(symbol) {
         });
         peerObject = { symbol: peer, quote: quote };
         peersDataToSend.push(peerObject);
-        // console.log(peer, quote);
         return quote;
       } catch (error) {
         console.error(error);
       }
     })
   );
-  console.log(peersDataToSend);
   return peersDataToSend;
 }
 
@@ -113,76 +111,23 @@ async function basicFinancials(symbol) {
   }
 }
 
-async function socialSentiment(symbol) {
-  let sentiment = {};
-  try {
-    await axios
-      .get(
-        `https://finnhub.io/api/v1/stock/social-sentiment?symbol=${symbol}&token=${process.env.FINNHUB_API_KEY}`
-      )
-      .then((data) => {
-        sentiment = data.data;
-      });
-  } catch (error) {
-    console.error(error);
-  }
-  return sentiment;
-}
-
 async function companyNews(symbol) {
+  const alphaUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${symbol}&apikey=${alphaVantageKey}`;
   try {
-    const response = await new Promise((resolve, reject) => {
-      finnhubClient.companyNews(
-        symbol,
-        "2023-07-18",
-        "2023-07-19",
-        (error, data, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(data);
-          }
-        }
-      );
-    });
-    return response;
+    const response = await axios.get(alphaUrl);
+    return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
 }
 
-// async function chartData(symbol) {
-//   try {
-//     const response = await new Promise((resolve, reject) => {
-//       finnhubClient.stockCandles(
-//         symbol,
-//         "M",
-//         1590988249,
-//         1591852249,
-//         (error, data, response) => {
-//           if (error) {
-//             reject(error);
-//           } else {
-//             resolve(data);
-//           }
-//         }
-//       );
-//     });
-//     return response;
-//   } catch (error) {
-//     console.error(error);
-//     throw error;
-//   }
-// }
 
 async function getData(symbol) {
   const earnings = await earningsCalendar(symbol);
   const profile = await companyProfile(symbol);
   const peers = await getPeers(symbol);
   const financials = await basicFinancials(symbol);
-  const sentiment = await socialSentiment(symbol);
-  // const chart = await chartData(symbol);
   const companyNewsArticles = await companyNews(symbol);
 
   let companyData = {
@@ -190,9 +135,8 @@ async function getData(symbol) {
     peers: peers,
     earnings: earnings,
     financials: financials,
-    sentiment: sentiment,
-    // chart: chart,
     companyNews: companyNewsArticles,
+    // sentiment: sentiment,
   };
 
   return companyData;

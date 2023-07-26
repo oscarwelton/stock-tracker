@@ -30,6 +30,7 @@ const ViewPage = () => {
             setSentiment(data.sentiment);
             setFinancials(data.financials);
             setNews(data.companyNews);
+            console.log(data.companyNews)
             setChartData(data.chart);
           });
       } catch (err) {
@@ -69,7 +70,7 @@ const ViewPage = () => {
             <Earnings earnings={earnings} />
           </div>
           <div className="company-news">
-            <CompanyNews news={news.slice(0, 20)} />
+            <CompanyNews news={news} />
           </div>
         </div>
       </div>
