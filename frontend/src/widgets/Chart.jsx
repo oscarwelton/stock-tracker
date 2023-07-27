@@ -74,11 +74,17 @@ const Chart = () => {
 
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={chartData}>
+        <defs>
+          <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#171616" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#171616" stopOpacity={0} />
+          </linearGradient>
+        </defs>
           <Area
             type="monotone"
             dataKey="value"
-            stroke="#8884d8"
-            fill="#8884d8"
+            stroke="#171616"
+            fill="url(#colorGradient)"
           />
           <XAxis dataKey="date" />
           <YAxis domain={["dataMin", "dataMax"]} />
