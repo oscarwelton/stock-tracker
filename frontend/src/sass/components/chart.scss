@@ -1,11 +1,12 @@
 .chart-widget {
   position: relative;
+  padding: 1rem;
 }
 
 .chart-buttons {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
   z-index: 1;
 
   button {

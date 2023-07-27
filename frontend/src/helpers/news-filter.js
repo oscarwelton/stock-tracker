@@ -6,8 +6,6 @@ export const filterNews = (symbol, news) => {
   });
 };
 
-
-
 export const socialSentiment = (news) => {
   return typeof(news)
 }
