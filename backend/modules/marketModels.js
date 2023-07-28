@@ -97,8 +97,6 @@ async function modelData() {
       movers: moversData,
       sectors: sectorsData,
     };
-
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
