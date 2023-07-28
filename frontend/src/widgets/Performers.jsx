@@ -1,4 +1,5 @@
 const { useState, useEffect } = require("react");
+const { getPercentageColor } = require("../helpers/color-helper.js");
 
 const Performers = () => {
   const [gainers, setGainers] = useState([]);
@@ -27,7 +28,13 @@ const Performers = () => {
               {gainer.symbol} - {gainer.name}
             </p>
             <p>
-              {gainer.price} USD | +{gainer.changesPercentage} %
+              {gainer.price.toFixed(2)} |
+              <span
+                style={{ color: getPercentageColor(gainer.changesPercentage) }}
+              >
+                {" "}
+                {gainer.changesPercentage.toFixed(2)} %
+              </span>
             </p>
           </div>
         ))}
@@ -40,7 +47,12 @@ const Performers = () => {
               {loser.symbol} - {loser.name}
             </p>
             <p>
-              {loser.price} USD | {loser.changesPercentage} %
+              {loser.price.toFixed(2)} USD |{" "}
+              <span
+                style={{ color: getPercentageColor(loser.changesPercentage) }}
+              >
+                {loser.changesPercentage.toFixed(2)} %
+              </span>
             </p>
           </div>
         ))}
@@ -53,7 +65,12 @@ const Performers = () => {
               {mover.symbol} - {mover.name}
             </p>
             <p>
-              {mover.price} USD | {mover.changesPercentage} %
+              {mover.price.toFixed(2)} USD |{" "}
+              <span
+                style={{ color: getPercentageColor(mover.changesPercentage) }}
+              >
+                {mover.changesPercentage.toFixed(2)} %
+              </span>
             </p>
           </div>
         ))}
@@ -63,7 +80,15 @@ const Performers = () => {
         {Object.keys(sectors).map((key, index) => (
           <div className="sector" key={index}>
             <p>{sectors[key].sector} </p>
-            <p>{sectors[key].changesPercentage}</p>
+            <p>
+              <span
+                style={{
+                  color: getPercentageColor(sectors[key].changesPercentage),
+                }}
+              >
+                {sectors[key].changesPercentage}
+              </span>
+            </p>
           </div>
         ))}
       </div>
