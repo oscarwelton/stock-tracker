@@ -54,6 +54,15 @@ export const getUnixTimestampOneMonthAgo = (currentDate) => {
   return Math.floor(oneMonthAgo.getTime() / 1000);
 };
 
+export const getUnixTimestampThreeMonthsAgo = (currentDate) => {
+  const oneMonthAgo = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() - 3,
+    currentDate.getDate()
+  );
+  return Math.floor(oneMonthAgo.getTime() / 1000);
+};
+
 export const getUnixTimestampOneYearAgo = (currentDate) => {
   const oneYearAgo = new Date(
     currentDate.getFullYear() - 1,
@@ -73,7 +82,7 @@ export const getFrom = (period, now) => {
     case "1m":
       return getUnixTimestampOneMonthAgo(now);
     case "3m":
-      return getUnixTimestampOneMonthAgo(now);
+      return getUnixTimestampThreeMonthsAgo(now);
     case "1y":
       return getUnixTimestampOneYearAgo(now);
     default:

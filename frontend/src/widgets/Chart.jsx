@@ -15,9 +15,9 @@ import {
 const Chart = () => {
   let chartConfig = [
     { resolution: 30 },
+    { resolution: 5 },
     { resolution: 30 },
     { resolution: 60 },
-    { resolution: "D" },
     { resolution: "D" },
   ];
 
