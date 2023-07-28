@@ -1,6 +1,6 @@
 const { useState, useEffect } = require("react");
 
-const Headlines = () => {
+const Performers = () => {
   const [gainers, setGainers] = useState([]);
   const [losers, setLosers] = useState([]);
   const [movers, setMovers] = useState([]);
@@ -71,4 +71,4 @@ const Headlines = () => {
   );
 };
 
-export default Headlines;
+export default Performers;

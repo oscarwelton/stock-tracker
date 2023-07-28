@@ -2,7 +2,7 @@
 import Navbar from "./Navbar";
 import Banner from "../components/Banner";
 import MarketNews from "../widgets/MarketNews";
-import Headlines from "../widgets/Headlines";
+import Performers from "../widgets/Performers";
 
 const HomePage = () => {
   // useEffect(() => {
@@ -30,7 +30,7 @@ const HomePage = () => {
 
       <div style={{ display: "flex" }}>
         <div style={{ flex: 2 }}><MarketNews /></div>
-        <div style={{ flex: 1 }}><Headlines /></div>
+        <div style={{ flex: 1 }}><Performers /></div>
       </div>
 
     </>

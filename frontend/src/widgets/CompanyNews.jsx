@@ -26,6 +26,7 @@ const CompanyNews = (props) => {
             <p>
               {convertDate(story.time_published)} {story.source}
             </p>
+            <img className="story-image" src={story.banner_image} alt="" />
             <div className="company-news-header">
             </div>
             <div className="story-content">

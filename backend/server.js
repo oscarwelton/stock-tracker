@@ -7,8 +7,8 @@ const cookieParser = require("cookie-parser");
 const searchSymbol = require("./modules/stockApi");
 const getData = require("./modules/companyData");
 const chartData = require("./modules/chartData");
+const modelData = require("./modules/marketModels");
 // const marketNews = require("./modules/newsApi");
-// const modelData = require("./modules/marketModels");
 
 dotenv.config();
 
@@ -31,25 +31,8 @@ app.get("/market-news", async (req, res) => {
 
 app.get("/headlines", async (req, res) => {
   try {
-    const gainersBuffer = fs.readFileSync("./data/gainers.json");
-    const gainersData = JSON.parse(gainersBuffer.toString());
-
-    const losersBuffer = fs.readFileSync("./data/losers.json");
-    const losersData = JSON.parse(losersBuffer.toString());
-
-    const moversBuffer = fs.readFileSync("./data/movers.json");
-    const moversData = JSON.parse(moversBuffer.toString());
-
-    const sectorsBuffer = fs.readFileSync("./data/sectors.json");
-    const sectorsData = JSON.parse(sectorsBuffer.toString());
-
-    const combinedData = {
-      gainers: gainersData.slice(0, 5),
-      losers: losersData.slice(0, 5),
-      movers: moversData.slice(0, 5),
-      sectors: sectorsData,
-    };
-
+    const combinedData = await modelData();
+    console.log(combinedData);
     res.json(combinedData);
   } catch (error) {
     console.error("Error retrieving headlines:", error);
@@ -89,14 +72,14 @@ app.post("/chart", async (req, res) => {
   }
 });
 
-// app.post("/peers", async (req, res) => {
-//   try {
-//     const data = req.body;
-//     res.json(await getPeers(data));
-//   } catch (error) {
-//     console.error("Error retrieving peers data:", error);
-//   }
-// });
+app.post("/peers", async (req, res) => {
+  try {
+    const data = req.body;
+    res.json(await getPeers(data));
+  } catch (error) {
+    console.error("Error retrieving peers data:", error);
+  }
+});
 
 // const WebSocket = require("ws");
 
