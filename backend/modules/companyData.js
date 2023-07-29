@@ -13,6 +13,7 @@ async function getPeers(symbol) {
   let peerObject = {};
   let peersDataToSend = [];
 
+
   try {
     await axios
       .get(

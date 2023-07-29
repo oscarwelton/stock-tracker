@@ -46,7 +46,7 @@ const MarketNews = () => {
           <div className="story-content">
 
           <h6>Published at: {formatDateWithTime(story.datetime)} | {story.source} </h6>
-          <h3>Published: {removeColon(story.headline)}  </h3>
+          <h3>{removeColon(story.headline)}  </h3>
             <p>{story.summary}</p>
           </div>
         </div>
