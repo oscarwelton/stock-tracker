@@ -5,7 +5,6 @@ const StockStats = (props) => {
 
   return dataLoaded ? (
     <>
-      <button>Overview</button>
       <button>Valuation Measures</button>
       <button>Share Statistics</button>
       <button>Stock Price History</button>

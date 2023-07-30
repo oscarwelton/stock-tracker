@@ -7,10 +7,10 @@ const peers = ({ peers }) => {
         <div className="peer" key={index}>
           <div className="peer-header">
             <p className="peer-symbol">{peer.symbol}</p>
-            <p className="peer-quote"> {peer.quote.c.toFixed(2)}</p>
+            <p className="peer-quote"> {peer.quote.c}</p>
           </div>
           <p className="peer-data" style={{ color: getPercentageColor(peer.quote.d)}}>
-            {peer.quote.d.toFixed(2)} ({peer.quote.dp.toFixed(2)}%)
+            {peer.quote.d} ({peer.quote.dp}%)
           </p>
         </div>
       ))}
