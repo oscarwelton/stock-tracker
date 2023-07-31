@@ -5,7 +5,7 @@ export const convertDateToUnix = (date) => {
 export const convertUnixToDate = (unix) => {
   const milliseconds = unix * 1000;
   return new Date(milliseconds);
-}
+};
 
 export const createDate = (date, days, weeks, months, years) => {
   let newDate = new Date(date);
@@ -13,7 +13,7 @@ export const createDate = (date, days, weeks, months, years) => {
   newDate.setMonth(newDate.getMonth() + months);
   newDate.setFullYear(newDate.getFullYear() + years);
   return newDate;
-}
+};
 
 const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
@@ -36,12 +36,12 @@ export const formatDateWithTime = (timestamp) => {
 };
 
 export const getUnixTimestampOneDayAgo = (currentDate) => {
-  const oneDayAgo = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000));
+  const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
   return Math.floor(oneDayAgo.getTime() / 1000);
 };
 
 export const getUnixTimestampOneWeekAgo = (currentDate) => {
-  const oneWeekAgo = new Date(currentDate.getTime() - (7 * 24 * 60 * 60 * 1000));
+  const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
   return Math.floor(oneWeekAgo.getTime() / 1000);
 };
 
@@ -72,7 +72,6 @@ export const getUnixTimestampOneYearAgo = (currentDate) => {
   return Math.floor(oneYearAgo.getTime() / 1000);
 };
 
-
 export const getFrom = (period, now) => {
   switch (period) {
     case "1d":
@@ -88,6 +87,7 @@ export const getFrom = (period, now) => {
     default:
       return getUnixTimestampOneDayAgo(now);
   }
-}
+};
+
 
 export default formatDate;

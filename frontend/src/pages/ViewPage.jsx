@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import Peers from "../widgets/Peers";
 import Earnings from "../widgets/Earnings";
 import Chart from "../widgets/Chart";
+import { ipoDate } from "helpers/date-helper";
 import Footer from "../components/Footer";
 
 const ViewPage = () => {
@@ -39,7 +40,7 @@ const ViewPage = () => {
     fetchStats();
   }, [location.state.symbol]);
 
-  console.log(location.state);
+  console.log(profile);
 
   return (
     <>
@@ -76,6 +77,7 @@ const ViewPage = () => {
                 </div>
 
                 <p>Industry: {profile.finnhubIndustry}</p>
+                <p>Shares Outstanding: {profile.shareOutstanding}</p>
                 <p>Market Cap: {profile.marketCapitalization}</p>
                 <p>EPS Growth 3Y: {financials.metric["epsGrowth3Y"]}</p>
                 <p>EPS Growth 5Y: {financials.metric["epsGrowth5Y"]} </p>
