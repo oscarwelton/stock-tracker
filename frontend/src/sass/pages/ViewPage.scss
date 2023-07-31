@@ -17,3 +17,21 @@
   }
 
 }
+
+
+.stock-statistics {
+  display: flex;
+  flex-wrap: wrap;
+
+  .stock-stats {
+    padding: 1rem;
+    width: 400px;
+
+    h3 {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+  }
+}

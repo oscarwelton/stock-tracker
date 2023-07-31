@@ -3,15 +3,8 @@ const StockStats = (props) => {
   const dataLoaded = financeData && Object.keys(financeData).length > 0;
 
   return dataLoaded ? (
-    <>
-      <button>Overview</button>
-      <button>Valuation Measures</button>
-      <button>Share Statistics</button>
-      <button>Stock Price History</button>
-      <button>Earnings</button>
-      <button>Dividends</button>
-
-      <div className="Overview">
+    <div className="stock-statistics">
+      <div className="Overview stock-stats">
         <h3>Overview</h3>
         <p>EPS Growth 3Y: {financeData["epsGrowth3Y"]}</p>
         <p>EPS Growth 5Y: {financeData["epsGrowth5Y"]} </p>
@@ -23,19 +16,18 @@ const StockStats = (props) => {
         <p>Current Ration Quaterly: {financeData["currentRatioQuarterly"]}</p>
         <p>PE Annual: {financeData["peAnnual"]}</p>
         <p>PE TTM: {financeData["peTTM"]}</p>
-
       </div>
 
-      <div className="valuationMeasures">
+      <div className="valuationMeasures stock-stats">
         <h3>Valuation Measures</h3>
         <p>Market Capitalisation: {financeData["marketCapitalization"]}</p>
         <p>Enterprise Valuation: {financeData["enterpriseValue"]}</p>
         <p>Annual Price Earnings: {financeData["peAnnual"]} </p>
         <p>TTM Price Earnings: {financeData["peTTM"]}</p>
-
+        <p>Book Value Per Share: {financeData["bookValuePerShareAnnual"]}</p>
       </div>
 
-      <div className="shareStatistics">
+      <div className="shareStatistics stock-stats">
         <h3>Share Statistics</h3>
         <p>10-day Trading Volume: {financeData["10DayAverageTradingVolume"]}</p>
         <p>
@@ -63,7 +55,7 @@ const StockStats = (props) => {
         </p>
       </div>
 
-      <div className="stockPriceHistory">
+      <div className="stockPriceHistory stock-stats">
         <h3>Stock Price History</h3>
         <p>Beta: {financeData["beta"]}</p>
         <p>Volatility: {financeData["3MonthADReturnStd"]}</p>
@@ -73,7 +65,7 @@ const StockStats = (props) => {
         <p>13-Week Price Return: {financeData["13WeekPriceReturnDaily"]}</p>
       </div>
 
-      <div className="dividends">
+      <div className="dividends stock-stats">
         <h3>Dividends</h3>
         <p>Dividend Growth Rate: {financeData["dividendGrowthRate5Y"]}</p>
         <p>
@@ -88,10 +80,21 @@ const StockStats = (props) => {
         <p>Payout Ratio - TTM: {financeData["payoutRatioTTM"]}</p>
       </div>
 
-      <div className="balanceSheet">
+      <div className="managementPerformance stock-stats">
+        <h3>Management Performance</h3>
+        <p>ROA - 5Y: {financeData["roa5Y"]}</p>
+        <p>ROA - TTM: {financeData["roaTTM"]}</p>
+        <p>ROE - 5Y: {financeData["roe5Y"]}</p>
+        <p>ROE - TTM: {financeData["roeTTM"]}</p>
+        <p>ROI - 5Y: {financeData["roi5Y"]} </p>
+        <p>ROI - TTM: {financeData["roiTTM"]}</p>
+      </div>
+
+      <div className="balanceSheet stock-stats">
         <h3>Balance Sheet</h3>
         <p>Current Ratio Annual: {financeData["currentRatioAnnual"]}</p>
         <p>Current Ratio Quarterly: {financeData["currentRatioQuarterly"]}</p>
+        <p>Total Debt / Equity: {financeData["longTermDebt/equityAnnual"]} </p>
         <p>
           Book Value per Share - Annual:{financeData["bookValuePerShareAnnual"]}
         </p>
@@ -121,28 +124,31 @@ const StockStats = (props) => {
         </p>
       </div>
 
-      <div className="incomeStatement">
+      <div className="incomeStatement stock-stats">
         <h3>Income Statement</h3>
         <p>Revenue Growth 3Y: {financeData["revenueGrowth3Y"]}</p>
         <p>Revenue Growth 5Y: {financeData["revenueGrowth5Y"]}</p>
-        <p>Revenue Quarterly Growth: {financeData["revenueGrowthQuarterlyYoy"]}</p>
+        <p>
+          Quarterly Revenue Growth (yoy):{" "}
+          {financeData["revenueGrowthQuarterlyYoy"]}
+        </p>
+        <p>
+          Quarterly Earnings Per Share Growth (yoy):{" "}
+          {financeData["epsGrowthQuarterlyYoy"]}
+        </p>
         <p>Revenue Per Share Annual: {financeData["revenuePerShareAnnual"]}</p>
+        <p>Cash Flow Per Share Annual: {financeData["cashFlowPerShareAnnual"]}</p>
+        <p>Cash Flow Per Share Quarterly: {financeData["cashFlowPerShareQuarterly"]}</p>
+        <p>Cash Flow Per Share TTM: {financeData["cashFlowPerShareTTM"]}</p>
+
 
       </div>
-    </>
+
+
+    </div>
   ) : (
     <div>Loading...</div>
   );
 };
-
-// "revenueEmployeeAnnual": 2.4044,
-//         "revenueEmployeeTTM": 2.3481,
-//         "revenueGrowth3Y": 14.87,
-//         "revenueGrowth5Y": 11.46,
-//         "revenueGrowthQuarterlyYoy": -2.51,
-//         "revenueGrowthTTMYoy": -0.24,
-//         "revenuePerShareAnnual": 24.1536,
-//         "revenuePerShareTTM": 24.3007,
-//         "revenueShareGrowth5Y": 17.22,
 
 export default StockStats;
