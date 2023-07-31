@@ -21,6 +21,9 @@ const StockStats = (props) => {
         <p>Net Profit 5Y: {financeData["netProfitMargin5Y"]}</p>
         <p>Current Ratio Annual: {financeData["currentRatioAnnual"]}</p>
         <p>Current Ration Quaterly: {financeData["currentRatioQuarterly"]}</p>
+        <p>PE Annual: {financeData["peAnnual"]}</p>
+        <p>PE TTM: {financeData["peTTM"]}</p>
+
       </div>
 
       <div className="valuationMeasures">
@@ -117,16 +120,29 @@ const StockStats = (props) => {
           {financeData["cashPerSharePerShareQuarterly"]}
         </p>
       </div>
+
+      <div className="incomeStatement">
+        <h3>Income Statement</h3>
+        <p>Revenue Growth 3Y: {financeData["revenueGrowth3Y"]}</p>
+        <p>Revenue Growth 5Y: {financeData["revenueGrowth5Y"]}</p>
+        <p>Revenue Quarterly Growth: {financeData["revenueGrowthQuarterlyYoy"]}</p>
+        <p>Revenue Per Share Annual: {financeData["revenuePerShareAnnual"]}</p>
+
+      </div>
     </>
   ) : (
     <div>Loading...</div>
   );
 };
 
-// "cashFlowPerShareAnnual": 6.9899,
-// "cashFlowPerShareQuarterly": 6.2003,
-// "cashFlowPerShareTTM": 6.59391,
-// "cashPerSharePerShareAnnual": 3.0297,
-// "cashPerSharePerShareQuarterly": 3.5534,
+// "revenueEmployeeAnnual": 2.4044,
+//         "revenueEmployeeTTM": 2.3481,
+//         "revenueGrowth3Y": 14.87,
+//         "revenueGrowth5Y": 11.46,
+//         "revenueGrowthQuarterlyYoy": -2.51,
+//         "revenueGrowthTTMYoy": -0.24,
+//         "revenuePerShareAnnual": 24.1536,
+//         "revenuePerShareTTM": 24.3007,
+//         "revenueShareGrowth5Y": 17.22,
 
 export default StockStats;
