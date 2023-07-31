@@ -1,5 +1,6 @@
 // import React, { useEffect } from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 import Banner from "../components/Banner";
 import MarketNews from "../widgets/MarketNews";
 import Performers from "../widgets/Performers";
@@ -27,12 +28,11 @@ const HomePage = () => {
     <>
       <Navbar />
       <Banner />
-
       <div style={{ display: "flex" }}>
         <div style={{ flex: 2 }}><MarketNews /></div>
         <div style={{ flex: 1 }}><Performers /></div>
       </div>
-
+      <Footer />
     </>
   );
 };

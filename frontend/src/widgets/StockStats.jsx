@@ -4,21 +4,7 @@ const StockStats = (props) => {
 
   return dataLoaded ? (
     <div className="stock-statistics">
-      <div className="Overview stock-stats">
-        <h3>Overview</h3>
-        <p>EPS Growth 3Y: {financeData["epsGrowth3Y"]}</p>
-        <p>EPS Growth 5Y: {financeData["epsGrowth5Y"]} </p>
-        <p>Gross Profit Annual:{financeData["grossMarginAnnual"]}</p>
-        <p>Gross Profit 5Y: {financeData["grossMargin5Y"]}</p>
-        <p>Net Profit Annual: {financeData["netProfitMarginAnnual"]}</p>
-        <p>Net Profit 5Y: {financeData["netProfitMargin5Y"]}</p>
-        <p>Current Ratio Annual: {financeData["currentRatioAnnual"]}</p>
-        <p>Current Ration Quaterly: {financeData["currentRatioQuarterly"]}</p>
-        <p>PE Annual: {financeData["peAnnual"]}</p>
-        <p>PE TTM: {financeData["peTTM"]}</p>
-      </div>
-
-      <div className="valuationMeasures stock-stats">
+            <div className="valuationMeasures stock-stats">
         <h3>Valuation Measures</h3>
         <p>Market Capitalisation: {financeData["marketCapitalization"]}</p>
         <p>Enterprise Valuation: {financeData["enterpriseValue"]}</p>
