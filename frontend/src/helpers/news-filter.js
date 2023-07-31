@@ -5,7 +5,3 @@ export const filterNews = (symbol, news) => {
     return titleContainsSymbol || summaryContainsSymbol;
   });
 };
-
-export const socialSentiment = (news) => {
-  return typeof(news)
-}

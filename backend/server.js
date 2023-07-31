@@ -32,7 +32,6 @@ app.get("/market-news", async (req, res) => {
 app.get("/headlines", async (req, res) => {
   try {
     const combinedData = await modelData();
-    console.log(combinedData);
     res.json(combinedData);
   } catch (error) {
     console.error("Error retrieving headlines:", error);

@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import StockStats from "../widgets/StockStats";
 import CompanyNews from "../widgets/CompanyNews";
+import Sentiment from "../widgets/Sentiment";
 import { useEffect } from "react";
 import Peers from "../widgets/Peers";
 import Earnings from "../widgets/Earnings";
@@ -37,6 +38,7 @@ const ViewPage = () => {
     fetchStats();
   }, [location.state.symbol]);
 
+
   return (
     <>
       <Navbar />
@@ -67,6 +69,7 @@ const ViewPage = () => {
             <Earnings earnings={earnings} />
           </div>
           <div className="company-news">
+            <Sentiment news={news}/>
             <CompanyNews news={news} />
           </div>
         </div>

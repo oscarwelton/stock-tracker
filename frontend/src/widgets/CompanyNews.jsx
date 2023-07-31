@@ -1,14 +1,12 @@
 import { convertUnixToDate } from "helpers/date-helper";
 import { useLocation } from "react-router-dom";
 import { filterNews } from "helpers/news-filter";
-import { socialSentiment } from "helpers/news-filter";
 
 const CompanyNews = (props) => {
   const location = useLocation();
   const newsArray = props["news"]
   const symbol = location.state.symbol
   const news = filterNews(symbol, newsArray)
-  console.log(news)
 
   const convertDate = (unix) => {
     const date = convertUnixToDate(unix).toDateString();
@@ -17,6 +15,7 @@ const CompanyNews = (props) => {
 
   return (
     <>
+
       <h2 className="company-headlines-header">
         Latest Headlines - {symbol}
       </h2>
