@@ -9,6 +9,8 @@ const StockStats = (props) => {
         <p>Market Capitalisation: {financeData["marketCapitalization"]}</p>
         <p>Enterprise Valuation: {financeData["enterpriseValue"]}</p>
         <p>Annual Price Earnings: {financeData["peAnnual"]} </p>
+        <p>EPS Growth 3Y: {financeData["epsGrowth3Y"]}</p>
+        <p>Net Profit 5Y: {financeData["netProfitMargin5Y"]}</p>
         <p>TTM Price Earnings: {financeData["peTTM"]}</p>
         <p>Book Value Per Share: {financeData["bookValuePerShareAnnual"]}</p>
       </div>
@@ -109,7 +111,7 @@ const StockStats = (props) => {
           {financeData["revenueGrowthQuarterlyYoy"]}
         </p>
         <p>
-          Quarterly Earnings Per Share Growth (yoy):{" "}
+          Quarterly EPS Growth (yoy):{" "}
           {financeData["epsGrowthQuarterlyYoy"]}
         </p>
         <p>Revenue Per Share Annual: {financeData["revenuePerShareAnnual"]}</p>

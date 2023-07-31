@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import Peers from "../widgets/Peers";
 import Earnings from "../widgets/Earnings";
 import Chart from "../widgets/Chart";
-import { ipoDate } from "helpers/date-helper";
 import Footer from "../components/Footer";
 
 const ViewPage = () => {
@@ -51,15 +50,9 @@ const ViewPage = () => {
         <div className="stats">
           <div className="information">
             <div className="profile-header">
-              <img
-                className="company-logo"
-                src={profile.logo}
-                alt={profile.name}
-              />
+              <img className="company-logo" src={profile.logo} alt={profile.name}/>
               <div>
-                <h2>
-                  {profile.name} ({profile.ticker})
-                </h2>
+                <h2> {profile.name} ({profile.ticker})</h2>
               </div>
             </div>
             <Chart chart={[location.state.symbol, chartData]} />
@@ -79,7 +72,6 @@ const ViewPage = () => {
                 <p>Industry: {profile.finnhubIndustry}</p>
                 <p>Shares Outstanding: {profile.shareOutstanding}</p>
                 <p>Market Cap: {profile.marketCapitalization}</p>
-                <p>EPS Growth 3Y: {financials.metric["epsGrowth3Y"]}</p>
                 <p>EPS Growth 5Y: {financials.metric["epsGrowth5Y"]} </p>
                 <p>
                   Gross Profit Annual:{financials.metric["grossMarginAnnual"]}
@@ -89,7 +81,6 @@ const ViewPage = () => {
                   Net Profit Annual:{" "}
                   {financials.metric["netProfitMarginAnnual"]}
                 </p>
-                <p>Net Profit 5Y: {financials.metric["netProfitMargin5Y"]}</p>
                 <p>
                   Current Ratio Annual:{" "}
                   {financials.metric["currentRatioAnnual"]}
