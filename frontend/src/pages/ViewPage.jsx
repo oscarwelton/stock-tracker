@@ -39,6 +39,8 @@ const ViewPage = () => {
     fetchStats();
   }, [location.state.symbol]);
 
+  console.log(location.state);
+
   return (
     <>
       <Navbar />
@@ -56,14 +58,7 @@ const ViewPage = () => {
               <div>
                 <h2>
                   {profile.name} ({profile.ticker})
-                  <a href={profile.weburl} rel="noreferrer" target="_blank">
-                    Visit Site
-                  </a>
                 </h2>
-                <h4>
-                  Industry: {profile.finnhubIndustry} Market Cap:{" "}
-                  {profile.marketCapitalization}
-                </h4>
               </div>
             </div>
             <Chart chart={[location.state.symbol, chartData]} />
@@ -71,9 +66,17 @@ const ViewPage = () => {
             <StockStats financials={financials} />
           </div>
           <div className="company-news">
-            {financials ? (
+            {financials.metric ? (
               <div className="Overview">
-                <h3>Overview</h3>
+                <div className="overview-header">
+                  <h3>Overview </h3>
+                  <a href={profile.weburl} rel="noreferrer" target="_blank">
+                    Visit Company Site
+                  </a>
+                </div>
+
+                <p>Industry: {profile.finnhubIndustry}</p>
+                <p>Market Cap: {profile.marketCapitalization}</p>
                 <p>EPS Growth 3Y: {financials.metric["epsGrowth3Y"]}</p>
                 <p>EPS Growth 5Y: {financials.metric["epsGrowth5Y"]} </p>
                 <p>
@@ -101,7 +104,6 @@ const ViewPage = () => {
                 <h3>Data Loading</h3>
               </div>
             )}
-
             <Sentiment news={news} />
             <CompanyNews news={news} />
           </div>

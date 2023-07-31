@@ -68,7 +68,7 @@ async function searchSymbol(query) {
     filteredData = matchSorter(filteredData, query, {
       keys: ["displaySymbol", "description"],
     });
-    filteredData = filteredData.slice(0, 5);
+    filteredData = filteredData.slice(0, 10);
 
     for (let obj of filteredData) {
       const quote = await getQuote(obj);

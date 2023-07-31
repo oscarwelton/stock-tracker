@@ -16,22 +16,27 @@
   justify-content: flex-end;
 
   input {
+    border-radius: 5px;
     font-size: 1.5rem;
+    margin-left: 0.5rem;
   }
 }
 
 .searchResults {
   z-index: 2;
   position: absolute;
-  top: 100%; /* Position the results below the searchBar */
-  width: 100%;
-  max-height: 300px; /* Set a maximum height to limit the dropdown size */
+  top: 100%;
+  right: 0%;
+  max-width: 600px;
+  min-width: 300px;
+  max-height: 300px;
   overflow-y: auto;
-  overflow-x: hidden; /* Enable vertical scrolling if the results exceed the max height */
+  overflow-x: hidden;
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
   padding: 10px;
+  border-radius: 5px 0px 5px 5px;
 }
 
 .searchResult {
@@ -39,6 +44,18 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  padding: 0.5rem;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #ccc;
+    cursor: pointer;
+  }
+
+
+  .result-quote {
+    margin-left: 3rem;
+  }
 }
 
 /* Add any other styles as needed */

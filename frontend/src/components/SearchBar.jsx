@@ -52,21 +52,24 @@ function SearchBar() {
         {results.length > 0 && (
           <div className="searchResults">
             {results.map((result, index) => (
-              <div className="searchResult" key={result.displaySymbol}>
-                <FlexBetween>
-                  <p>
-                    {result.description} ({result.displaySymbol})
-                    {result.currentPrice}
-                    <span
-                      style={{
-                        color: getPercentageColor(result.percentChange),
-                      }}
-                    >
-                      {result.percentChange}%
-                    </span>
-                  </p>
-                </FlexBetween>
-                <button onClick={() => handleClick(result)}>View</button>
+              <div
+                className="searchResult"
+                onClick={() => handleClick(result)}
+                key={result.displaySymbol}
+              >
+                <p>
+                  {result.description} ({result.displaySymbol}){" "}
+                </p>
+                <p className="result-quote">
+                  {result.currentPrice}{" "}
+                  <span
+                    style={{
+                      color: getPercentageColor(result.percentChange),
+                    }}
+                  >
+                    ({result.percentChange}%)
+                  </span>
+                </p>
               </div>
             ))}
           </div>

@@ -4,7 +4,7 @@ const StockStats = (props) => {
 
   return dataLoaded ? (
     <div className="stock-statistics">
-            <div className="valuationMeasures stock-stats">
+      <div className="valuationMeasures stock-stats">
         <h3>Valuation Measures</h3>
         <p>Market Capitalisation: {financeData["marketCapitalization"]}</p>
         <p>Enterprise Valuation: {financeData["enterpriseValue"]}</p>
@@ -66,16 +66,6 @@ const StockStats = (props) => {
         <p>Payout Ratio - TTM: {financeData["payoutRatioTTM"]}</p>
       </div>
 
-      <div className="managementPerformance stock-stats">
-        <h3>Management Performance</h3>
-        <p>ROA - 5Y: {financeData["roa5Y"]}</p>
-        <p>ROA - TTM: {financeData["roaTTM"]}</p>
-        <p>ROE - 5Y: {financeData["roe5Y"]}</p>
-        <p>ROE - TTM: {financeData["roeTTM"]}</p>
-        <p>ROI - 5Y: {financeData["roi5Y"]} </p>
-        <p>ROI - TTM: {financeData["roiTTM"]}</p>
-      </div>
-
       <div className="balanceSheet stock-stats">
         <h3>Balance Sheet</h3>
         <p>Current Ratio Annual: {financeData["currentRatioAnnual"]}</p>
@@ -123,14 +113,25 @@ const StockStats = (props) => {
           {financeData["epsGrowthQuarterlyYoy"]}
         </p>
         <p>Revenue Per Share Annual: {financeData["revenuePerShareAnnual"]}</p>
-        <p>Cash Flow Per Share Annual: {financeData["cashFlowPerShareAnnual"]}</p>
-        <p>Cash Flow Per Share Quarterly: {financeData["cashFlowPerShareQuarterly"]}</p>
+        <p>
+          Cash Flow Per Share Annual: {financeData["cashFlowPerShareAnnual"]}
+        </p>
+        <p>
+          Cash Flow Per Share Quarterly:{" "}
+          {financeData["cashFlowPerShareQuarterly"]}
+        </p>
         <p>Cash Flow Per Share TTM: {financeData["cashFlowPerShareTTM"]}</p>
-
-
       </div>
 
-
+      <div className="managementPerformance stock-stats">
+        <h3>Management Performance</h3>
+        <p>ROA - 5Y: {financeData["roa5Y"]}</p>
+        <p>ROA - TTM: {financeData["roaTTM"]}</p>
+        <p>ROE - 5Y: {financeData["roe5Y"]}</p>
+        <p>ROE - TTM: {financeData["roeTTM"]}</p>
+        <p>ROI - 5Y: {financeData["roi5Y"]} </p>
+        <p>ROI - TTM: {financeData["roiTTM"]}</p>
+      </div>
     </div>
   ) : (
     <div>Loading...</div>
