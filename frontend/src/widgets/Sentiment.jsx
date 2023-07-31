@@ -1,23 +1,19 @@
-
 import { scoreAlgorithm } from "../helpers/score-algorithm.js";
-
 
 const Sentiment = (props) => {
 
-
-
-  // console.log(scoreAlgorithm(props["news"]))
-
-
+  const sentimentScore = scoreAlgorithm(props);
 
   return (
-    <h2>hello world this is the sentiment score section</h2>
-  )
-}
-
+    <>
+    <button>i</button>
+      <h2>Market Sentiment: {sentimentScore.status}</h2>
+      <h2>Sentiment Score: {sentimentScore.score.toFixed(5)}</h2>
+    </>
+  );
+};
 
 export default Sentiment;
-
 
 // relevance_score_definition
 // "0 < x <= 1, with a higher score indicating higher relevance."
