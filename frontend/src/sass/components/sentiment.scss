@@ -1,11 +1,26 @@
 .sentiment {
+  padding: 1rem;
 
   button {
     cursor: pointer;
+    float: right;
+  }
+
+  h2 {
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span {
+    font-weight: 500;
   }
 }
 
 .sentiment-info {
+  max-width: 400px;
+  min-width: 200px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -16,11 +31,24 @@
   z-index: 5;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 
+  h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
   button {
     float: right;
     display: block;
-    background-color: transparent;
-    border: none;
     cursor: pointer;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+  width: 75%;
+  margin: 0 auto;
   }
 }

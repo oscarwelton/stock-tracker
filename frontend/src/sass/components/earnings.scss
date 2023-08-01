@@ -1,10 +1,27 @@
-.earnings {
-  display: flex;
-  flex-direction: row-reverse;
+.earnings-widget {
+  padding: 1rem;
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .earnings {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+  }
+
+
+  .earning-header {
+    border-bottom: 1px solid #ccc;
+  }
+
 
   .earning {
-    padding: 1rem;
-    margin: 1rem;
-    border: 1px solid #ccc;
+    width: 20%;
+
   }
 }
