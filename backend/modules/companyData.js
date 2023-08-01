@@ -13,7 +13,6 @@ async function getPeers(symbol) {
   let peerObject = {};
   let peersDataToSend = [];
 
-
   try {
     await axios
       .get(
@@ -35,6 +34,7 @@ async function getPeers(symbol) {
               reject(error);
             } else {
               resolve(data);
+              console.log(data);
             }
           });
         });
@@ -42,7 +42,9 @@ async function getPeers(symbol) {
         peersDataToSend.push(peerObject);
         return quote;
       } catch (error) {
-        console.error(error);
+        console.log(
+          "there was an error fetching the quote - company data function"
+        );
       }
     })
   );
@@ -122,7 +124,6 @@ async function companyNews(symbol) {
     throw error;
   }
 }
-
 
 async function getData(symbol) {
   const earnings = await earningsCalendar(symbol);

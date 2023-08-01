@@ -3,16 +3,48 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  overflow-x: scroll;
   border: 1px solid #ccc;
-}
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
-.peer-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-  .peer-symbol {
-    margin-right: 1rem;
-    font-weight: 600;
+  .peer {
+    min-width: 150px;
+    padding: 0.5rem 1rem;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      border-radius: 5px;
+      box-sizing: border-box;
+      border-radius: 5px 5px 0px 0px;
+      background-color: rgba(206, 166, 255, 1);
+    }
+
+    .peer-info {
+      position: absolute;
+      background-color: rgba(206, 166, 255, 1);
+      padding: 0.5rem 1rem;
+      border-radius: 0px 0px 5px 5px;
+      top: 100%;
+      left: 0%;
+      z-index: 4;
+    }
+
+    .peer-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+
+      .peer-symbol {
+        margin-right: 1rem;
+        font-weight: 600;
+      }
+    }
   }
 }

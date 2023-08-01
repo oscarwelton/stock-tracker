@@ -53,8 +53,8 @@ async function getQuote(obj) {
     });
     return quote;
   } catch (error) {
-    console.error(error);
-  }
+    console.log("there was an error fetching the quote:");
+   }
 }
 
 async function searchSymbol(query) {

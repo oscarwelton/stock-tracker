@@ -65,7 +65,7 @@ const ViewPage = () => {
                 <div className="overview-header">
                   <h3>Overview </h3>
                   <a href={profile.weburl} rel="noreferrer" target="_blank">
-                    Visit Company Site
+                    Company Site
                   </a>
                 </div>
 

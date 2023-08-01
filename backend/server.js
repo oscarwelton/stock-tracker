@@ -8,6 +8,7 @@ const searchSymbol = require("./modules/stockApi");
 const getData = require("./modules/companyData");
 const chartData = require("./modules/chartData");
 const modelData = require("./modules/marketModels");
+const webSocket = require("./modules/webSocket");
 // const marketNews = require("./modules/newsApi");
 
 dotenv.config();
@@ -79,23 +80,3 @@ app.post("/peers", async (req, res) => {
     console.error("Error retrieving peers data:", error);
   }
 });
-
-// const WebSocket = require("ws");
-
-// function webSocket() {
-//   const socket = new WebSocket(
-//     `wss://ws.finnhub.io?token=${process.env.FINNHUB_API_KEY}`
-//   );
-
-//   socket.addEventListener("open", function () {
-//     socket.send(JSON.stringify({ type: "subscribe", symbol: "AAPL" }));
-//     socket.send(JSON.stringify({ type: "subscribe", symbol: "AMZN" }));
-//     socket.send(JSON.stringify({ type: "subscribe", symbol: "MSFT" }));
-//   });
-
-//   socket.addEventListener("message", function (event) {
-//     console.log("Message from server ", event.data);
-//   });
-// }
-
-// searchSymbol("SH").then((data) => console.log(data));
