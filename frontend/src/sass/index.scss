@@ -8,6 +8,7 @@
 @import "./components/chart.scss";
 @import "./pages/ViewPage.scss";
 @import "./components/footer.scss";
+@import "./components/sentiment.scss";
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
 #root {
@@ -15,11 +16,11 @@
 }
 
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
   height: 100%;
   width: 100%;
 }
 
 .App {
+  font-family: Rubik, sans-serif;
   height: 100%;
 }
