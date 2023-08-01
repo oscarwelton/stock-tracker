@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  overflow-x: scroll;
+  position: relative;
+  z-index: auto;
   border: 1px solid #ccc;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -19,16 +20,16 @@
 
     &:hover {
       cursor: pointer;
-      transform: scale(1.05);
       border-radius: 5px;
       box-sizing: border-box;
       border-radius: 5px 5px 0px 0px;
-      background-color: rgba(206, 166, 255, 1);
+      background-color: black;
+      color: white;
     }
 
     .peer-info {
       position: absolute;
-      background-color: rgba(206, 166, 255, 1);
+      background-color: black;
       padding: 0.5rem 1rem;
       border-radius: 0px 0px 5px 5px;
       top: 100%;
@@ -43,6 +44,10 @@
 
       .peer-symbol {
         margin-right: 1rem;
+        font-weight: 600;
+      }
+
+      .peer-data {
         font-weight: 600;
       }
     }
